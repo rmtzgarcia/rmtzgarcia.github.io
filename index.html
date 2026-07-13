@@ -141,6 +141,27 @@
   }
 
   .empty-note{color:var(--muted);font-style:italic;}
+
+  .profile-grid{display:grid;grid-template-columns:1fr 260px;gap:56px;align-items:start;}
+  @media (max-width:760px){.profile-grid{grid-template-columns:1fr;}}
+  .profile-main h1{
+    font-family:var(--serif);font-size:2.3rem;margin:0 0 6px;font-weight:600;
+  }
+  .profile-main p.tagline{color:var(--muted);font-size:1.05rem;margin:0 0 14px;max-width:640px;}
+
+  .profile-aside{display:flex;flex-direction:column;gap:6px;}
+  .profile-aside img.aside-photo{
+    width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.10);margin-bottom:8px;
+  }
+  .aside-cv{
+    display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:.95rem;margin-bottom:22px;
+  }
+  .aside-heading{
+    font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--ink);margin:18px 0 8px;
+  }
+  .aside-links{list-style:none;margin:0;padding:0;}
+  .aside-links li{margin-bottom:6px;font-size:.92rem;}
 </style>
 </head>
 <body>
@@ -162,26 +183,16 @@
 </header>
 
 <section id="about" style="padding-top:0;border-top:none;">
-  <div class="hero">
-    <img src="images/85356960.jpeg" alt="Ricardo Martinez-Garcia" loading="lazy">
-    <div class="hero-text">
+  <div class="profile-grid">
+    <div class="profile-main">
       <h1>Ricardo Martinez-Garcia</h1>
       <p class="tagline">Young Investigator Group Leader, CASUS-HZDR.</p>
       <p class="tagline">Complex-systems researcher interested in understanding the causes and consequences of emergent patterns and collective behaviors in complex systems. In particular, how heterogeneity and stochasticity at the microscopic scale lead to emergent macroscopic order, and how this order influences system-level robustness, resilience, and stability.</p>
-      <div class="hero-links">
-        <a href="https://scholar.google.com/citations?user=tak0qSUAAAAJ&hl=en" target="_blank">Google Scholar</a>
-        <a href="http://researchgate.net/profile/Ricardo-Martinez-Garcia" target="_blank">ResearchGate</a>
-        <a href="https://www.casus.science/dynamics-of-complex-living-systems/" target="_blank">Group page (CASUS)</a>
-      </div>
-    </div>
-  </div>
 
-  <div class="cols" style="margin-top:36px;">
-    <div>
       <h3 class="sub">Appointments</h3>
       <ul class="entry-list">
-        <li><span class="yr">Since 2022 –</span><span>Young Investigator Group Leader, CASUS-HZDR.</span></li>
-        <li><span class="yr">Since 2022 –</span><span>Affiliated Faculty, Princeton–CUNY Center for the Physics of Biological Function.</span></li>
+        <li><span class="yr">2022 –</span><span>Young Investigator Group Leader, CASUS-HZDR.</span></li>
+        <li><span class="yr">2022 –</span><span>Affiliated Faculty, Princeton–CUNY Center for the Physics of Biological Function.</span></li>
         <li><span class="yr">2019–22</span><span>Simons-FAPESP Assistant Professor, Biological Physics, ICTP-SAIFR and São Paulo State University.</span></li>
         <li><span class="yr">2019–22</span><span>Simons Associate, Abdus Salam International Center for Theoretical Physics (ICTP).</span></li>
         <li><span class="yr">2016–19</span><span>Life Sciences Research Foundation Fellow, Dept. of Ecology & Evolutionary Biology, Princeton University.</span></li>
@@ -194,8 +205,7 @@
         <li><span class="yr">2011</span><span>M.Sc. in Physics, University of the Balearic Islands, Spain.</span></li>
         <li><span class="yr">2010</span><span>Bachelor's in Physics, University of La Laguna, Spain.</span></li>
       </ul>
-    </div>
-    <div>
+
       <h3 class="sub">Selected Honors & Awards</h3>
       <ul class="entry-list">
         <li><span class="yr">2023</span><span>Junior Scientific Award of the Complex Systems Society.</span></li>
@@ -205,6 +215,22 @@
         <li><span class="yr">2013</span><span>Banco Santander Award, Best PhD students at the University of the Balearic Islands.</span></li>
       </ul>
     </div>
+
+    <aside class="profile-aside">
+      <img class="aside-photo" src="images/ricardo_photo.jpg" alt="Ricardo Martinez-Garcia" loading="lazy">
+      <a class="aside-cv" href="images/ricardo_cv.pdf" target="_blank">Full CV</a>
+
+      <h4 class="aside-heading">Bibliometrics</h4>
+      <ul class="aside-links">
+        <li><a href="https://scholar.google.com/citations?user=tak0qSUAAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+      </ul>
+
+      <h4 class="aside-heading">Other links</h4>
+      <ul class="aside-links">
+        <li><a href="http://researchgate.net/profile/Ricardo-Martinez-Garcia" target="_blank">ResearchGate</a></li>
+        <li><a href="https://www.casus.science/dynamics-of-complex-living-systems/" target="_blank">Group page (CASUS)</a></li>
+      </ul>
+    </aside>
   </div>
 </section>
 
