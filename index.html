@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricardo Martinez-Garcia</title>
+<style>
+  :root{
+    --ink:#1b2430;
+    --muted:#5b6674;
+    --accent:#2f5d4f;
+    --accent-soft:#e8efec;
+    --line:#e2e5e9;
+    --bg:#fbfbfa;
+    --card:#ffffff;
+    --serif: "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,251,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:980px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  }
+  nav .nav-left{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  nav .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.2px;}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap;}
+  nav .site-logo{height:46px;width:auto;display:block;}
+  nav ul li a{
+    color:var(--muted);font-size:.92rem;font-weight:500;
+    padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  nav ul li a:hover, nav ul li a.active{color:var(--ink);border-color:var(--accent);text-decoration:none;}
+
+  .hero{
+    max-width:980px;margin:0 auto;padding:64px 24px 40px;
+    display:flex;gap:44px;align-items:center;flex-wrap:wrap;
+  }
+  .hero img{
+    width:190px;height:190px;object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.10);
+  }
+  .hero-text h1{
+    font-family:var(--serif);font-size:2.3rem;margin:0 0 6px;font-weight:600;
+  }
+  .hero-text p.tagline{color:var(--muted);font-size:1.05rem;margin:0 0 14px;max-width:640px;}
+  .hero-links a{
+    display:inline-block;margin-right:14px;font-size:.92rem;font-weight:600;
+  }
+
+  section{max-width:980px;margin:0 auto;padding:48px 24px;}
+  section + section{border-top:1px solid var(--line);}
+  section h2{
+    font-family:var(--serif);font-size:1.65rem;margin:0 0 26px;font-weight:600;
+  }
+  section h3.sub{
+    font-family:var(--serif);font-size:1.2rem;margin:34px 0 10px;color:var(--accent);font-weight:600;
+  }
+  section h3.sub:first-of-type{margin-top:0;}
+  section p{color:#333;margin:0 0 14px;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media (max-width:720px){.cols{grid-template-columns:1fr;}}
+
+  .entry-list{list-style:none;margin:0;padding:0;}
+  .entry-list li{
+    padding:10px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:74px 1fr;gap:14px;font-size:.95rem;
+  }
+  .entry-list li:last-child{border-bottom:none;}
+  .entry-list .yr{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;}
+
+  .pub-list{list-style:none;margin:0;padding:0;}
+  .pub-list li{
+    padding:14px 0;border-bottom:1px solid var(--line);font-size:.94rem;color:#2a2f36;
+  }
+  .pub-list li:last-child{border-bottom:none;}
+  .pub-list .links{margin-left:6px;}
+  .pub-legend{color:var(--muted);font-size:.85rem;margin-bottom:22px;font-style:italic;}
+
+  .tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .tabs button{
+    font-family:var(--sans);font-size:.88rem;font-weight:600;
+    background:var(--accent-soft);color:var(--accent);border:none;border-radius:20px;
+    padding:8px 16px;cursor:pointer;transition:.15s;
+  }
+  .tabs button.active{background:var(--accent);color:#fff;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .people-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px;
+  }
+  .person{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .person img{width:100%;height:170px;object-fit:cover;display:block;}
+  .initials-avatar{
+    width:100%;height:170px;display:flex;align-items:center;justify-content:center;
+    background:#e4e6e9;
+    color:#8a929c;font-family:var(--serif);font-size:2.2rem;font-weight:600;letter-spacing:1px;
+  }
+  .map-wrap{max-width:820px;margin:0 auto 40px;}
+  .map-legend{display:flex;gap:24px;justify-content:center;margin-top:10px;font-size:.85rem;color:var(--muted);}
+  .map-legend .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .person .p-body{padding:14px 16px 18px;}
+  .person .p-body h4{margin:0 0 2px;font-size:1rem;font-family:var(--serif);}
+  .person .p-body .role{color:var(--accent);font-size:.82rem;font-weight:600;margin-bottom:8px;}
+  .person .p-body .co{color:var(--muted);font-size:.78rem;font-style:italic;margin-bottom:8px;}
+  .person .p-body p{font-size:.85rem;color:#444;margin:0;}
+
+  .alumni-group{margin-top:36px;}
+  .alumni-group h4{font-family:var(--serif);font-size:1.02rem;margin:22px 0 8px;}
+  .alumni-group ul{margin:0;padding-left:18px;color:#333;font-size:.9rem;}
+  .alumni-group ul li{margin-bottom:6px;}
+
+  .course{
+    border-left:3px solid var(--accent);padding:6px 0 6px 18px;margin-bottom:22px;
+  }
+  .course .yr-title{font-weight:700;margin-bottom:2px;}
+  .course .meta{color:var(--muted);font-size:.88rem;}
+
+  footer{
+    max-width:980px;margin:0 auto;padding:40px 24px 60px;color:var(--muted);font-size:.85rem;
+  }
+
+  .empty-note{color:var(--muted);font-style:italic;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <div class="nav-left">
+      <ul>
+      <li><a href="index.html" class="active">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <a href="index.html"><img class="site-logo" src="images/logo.png" alt="Dynamics of Complex Living Systems logo"></a>
+  </nav>
+</header>
+
+<section id="about" style="padding-top:0;border-top:none;">
+  <div class="hero">
+    <img src="images/ricardo_photo.jpg" alt="Ricardo Martinez-Garcia" loading="lazy">
+    <div class="hero-text">
+      <h1>Ricardo Martinez-Garcia</h1>
+      <p class="tagline">Young Investigator Group Leader, CASUS-HZDR.</p>
+      <p class="tagline">Complex-systems researcher interested in understanding the causes and consequences of emergent patterns and collective behaviors in complex systems. In particular, how heterogeneity and stochasticity at the microscopic scale lead to emergent macroscopic order, and how this order influences system-level robustness, resilience, and stability.</p>
+      <div class="hero-links">
+        <a href="https://scholar.google.com/citations?user=tak0qSUAAAAJ&hl=en" target="_blank">Google Scholar</a>
+        <a href="http://researchgate.net/profile/Ricardo-Martinez-Garcia" target="_blank">ResearchGate</a>
+        <a href="https://www.casus.science/dynamics-of-complex-living-systems/" target="_blank">Group page (CASUS)</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="cols" style="margin-top:36px;">
+    <div>
+      <h3 class="sub">Appointments</h3>
+      <ul class="entry-list">
+        <li><span class="yr">2022 –</span><span>Young Investigator Group Leader, CASUS-HZDR.</span></li>
+        <li><span class="yr">2022 –</span><span>Affiliated Faculty, Princeton–CUNY Center for the Physics of Biological Function.</span></li>
+        <li><span class="yr">2019–22</span><span>Simons-FAPESP Assistant Professor, Biological Physics, ICTP-SAIFR and São Paulo State University.</span></li>
+        <li><span class="yr">2019–22</span><span>Simons Associate, Abdus Salam International Center for Theoretical Physics (ICTP).</span></li>
+        <li><span class="yr">2016–19</span><span>Life Sciences Research Foundation Fellow, Dept. of Ecology & Evolutionary Biology, Princeton University.</span></li>
+        <li><span class="yr">2014–16</span><span>Postdoctoral Research Associate, Dept. of Ecology & Evolutionary Biology, Princeton University.</span></li>
+      </ul>
+
+      <h3 class="sub">Education</h3>
+      <ul class="entry-list">
+        <li><span class="yr">2014</span><span>Ph.D. in Physics, Institute for Cross-Disciplinary Physics and Complex Systems (IFISC), Spain.</span></li>
+        <li><span class="yr">2011</span><span>M.Sc. in Physics, University of the Balearic Islands, Spain.</span></li>
+        <li><span class="yr">2010</span><span>Bachelor's in Physics, University of La Laguna, Spain.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="sub">Selected Honors & Awards</h3>
+      <ul class="entry-list">
+        <li><span class="yr">2023</span><span>Junior Scientific Award of the Complex Systems Society.</span></li>
+        <li><span class="yr">2021</span><span>Young Member of the Brazilian Academy of Sciences.</span></li>
+        <li><span class="yr">2016</span><span>Life Sciences Research Foundation Postdoctoral Fellowship.</span></li>
+        <li><span class="yr">2014</span><span>Montserrat Casas PhD Thesis Award in Sciences, Engineering and Architecture.</span></li>
+        <li><span class="yr">2013</span><span>Banco Santander Award, Best PhD students at the University of the Balearic Islands.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Ricardo Martinez-Garcia · Young Investigator Group Leader, CASUS-HZDR</div>
+  <div style="margin-top:6px;">Last update: July 2026</div>
+</footer>
+
+</body>
+</html>

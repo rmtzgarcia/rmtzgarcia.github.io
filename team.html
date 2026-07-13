@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricardo Martinez-Garcia — Team</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+<style>
+  :root{
+    --ink:#1b2430;
+    --muted:#5b6674;
+    --accent:#2f5d4f;
+    --accent-soft:#e8efec;
+    --line:#e2e5e9;
+    --bg:#fbfbfa;
+    --card:#ffffff;
+    --serif: "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,251,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:980px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  }
+  nav .nav-left{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  nav .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.2px;}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap;}
+  nav .site-logo{height:46px;width:auto;display:block;}
+  nav ul li a{
+    color:var(--muted);font-size:.92rem;font-weight:500;
+    padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  nav ul li a:hover, nav ul li a.active{color:var(--ink);border-color:var(--accent);text-decoration:none;}
+
+  .hero{
+    max-width:980px;margin:0 auto;padding:64px 24px 40px;
+    display:flex;gap:44px;align-items:center;flex-wrap:wrap;
+  }
+  .hero img{
+    width:190px;height:190px;object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.10);
+  }
+  .hero-text h1{
+    font-family:var(--serif);font-size:2.3rem;margin:0 0 6px;font-weight:600;
+  }
+  .hero-text p.tagline{color:var(--muted);font-size:1.05rem;margin:0 0 14px;max-width:520px;}
+  .hero-links a{
+    display:inline-block;margin-right:14px;font-size:.92rem;font-weight:600;
+  }
+
+  section{max-width:980px;margin:0 auto;padding:48px 24px;}
+  section + section{border-top:1px solid var(--line);}
+  section h2{
+    font-family:var(--serif);font-size:1.65rem;margin:0 0 26px;font-weight:600;
+  }
+  section h3.sub{
+    font-family:var(--serif);font-size:1.2rem;margin:34px 0 10px;color:var(--accent);font-weight:600;
+  }
+  section h3.sub:first-of-type{margin-top:0;}
+  section p{color:#333;margin:0 0 14px;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media (max-width:720px){.cols{grid-template-columns:1fr;}}
+
+  .entry-list{list-style:none;margin:0;padding:0;}
+  .entry-list li{
+    padding:10px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:74px 1fr;gap:14px;font-size:.95rem;
+  }
+  .entry-list li:last-child{border-bottom:none;}
+  .entry-list .yr{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;}
+
+  .pub-list{list-style:none;margin:0;padding:0;}
+  .pub-list li{
+    padding:14px 0;border-bottom:1px solid var(--line);font-size:.94rem;color:#2a2f36;
+  }
+  .pub-list li:last-child{border-bottom:none;}
+  .pub-list .links{margin-left:6px;}
+  .pub-legend{color:var(--muted);font-size:.85rem;margin-bottom:22px;font-style:italic;}
+
+  .tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .tabs button{
+    font-family:var(--sans);font-size:.88rem;font-weight:600;
+    background:var(--accent-soft);color:var(--accent);border:none;border-radius:20px;
+    padding:8px 16px;cursor:pointer;transition:.15s;
+  }
+  .tabs button.active{background:var(--accent);color:#fff;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .people-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px;
+  }
+  .person{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .person img{width:100%;height:170px;object-fit:cover;display:block;}
+  .initials-avatar{
+    width:100%;height:170px;display:flex;align-items:center;justify-content:center;
+    background:#e4e6e9;
+    color:#8a929c;font-family:var(--serif);font-size:2.2rem;font-weight:600;letter-spacing:1px;
+  }
+  .map-wrap{max-width:820px;margin:0 auto 40px;}
+  .map-legend{display:flex;gap:24px;justify-content:center;margin-top:10px;font-size:.85rem;color:var(--muted);}
+  .map-legend .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .person .p-body{padding:14px 16px 18px;}
+  .person .p-body h4{margin:0 0 2px;font-size:1rem;font-family:var(--serif);}
+  .person .p-body .role{color:var(--accent);font-size:.82rem;font-weight:600;margin-bottom:8px;}
+  .person .p-body .co{color:var(--muted);font-size:.78rem;font-style:italic;margin-bottom:8px;}
+  .person .p-body p{font-size:.85rem;color:#444;margin:0;}
+
+  .alumni-group{margin-top:36px;}
+  .alumni-group h4{font-family:var(--serif);font-size:1.02rem;margin:22px 0 8px;}
+  .alumni-group ul{margin:0;padding-left:18px;color:#333;font-size:.9rem;}
+  .alumni-group ul li{margin-bottom:6px;}
+
+  .course{
+    border-left:3px solid var(--accent);padding:6px 0 6px 18px;margin-bottom:22px;
+  }
+  .course .yr-title{font-weight:700;margin-bottom:2px;}
+  .course .meta{color:var(--muted);font-size:.88rem;}
+
+  footer{
+    max-width:980px;margin:0 auto;padding:40px 24px 60px;color:var(--muted);font-size:.85rem;
+  }
+
+  .empty-note{color:var(--muted);font-style:italic;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <div class="nav-left">
+      <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="team.html" class="active">Team</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <a href="index.html"><img class="site-logo" src="images/logo.png" alt="Dynamics of Complex Living Systems logo"></a>
+  </nav>
+</header>
+
+<section id="team">
+  <h2>Team</h2>
+
+  <div class="map-wrap">
+    <div id="group-map"></div>
+    <div class="map-legend">
+      <span><span class="dot" style="background:#E24B4A;"></span>Current member</span>
+      <span><span class="dot" style="background:#378ADD;"></span>Alumni</span>
+    </div>
+  </div>
+
+  <h3 class="sub" style="margin-top:0;">Current Members</h3>
+  <div class="people-grid">
+    <div class="person">
+      <div class="initials-avatar">TA</div>
+      <div class="p-body">
+        <h4>Timon B. Althaus</h4>
+        <div class="role">Master Student</div>
+        <p>Works on spatial population dynamics in heterogeneous landscapes, focused on competition-colonization tradeoffs and habitat fragmentation.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/paulo_photo.jpg" alt="Paulo E. de Cerqueira Junior" loading="lazy">
+      <div class="p-body">
+        <h4>Paulo E. de Cerqueira Junior</h4>
+        <div class="role">PhD Student</div>
+        <div class="co">Co-supervised with Viola Priesemann, MPI-DS, Germany</div>
+        <p>Investigates regime shifts in dryland ecosystems, combining functional network analysis and Bayesian inference in simulated and remote-sensing data.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/melissa_photo.jpg" alt="Melissa Fuentealba" loading="lazy">
+      <div class="p-body">
+        <h4>Melissa Fuentealba</h4>
+        <div class="role">PhD Student</div>
+        <div class="co">Co-supervised with Ignacio Ormazábal, U. de Concepción, Chile</div>
+        <p>Studies spatial structures in the plant–fungi interaction underground, and their effects on the stability and productivity of ectomycorrhizal mutualism.</p>
+      </div>
+    </div>
+    <div class="person">
+      <div class="initials-avatar">ZL</div>
+      <div class="p-body">
+        <h4>Zihao Liu</h4>
+        <div class="role">PhD Student</div>
+        <p>Combines analytical and numerical approaches to study pattern formation, and applies population-dynamics frameworks to opinion shifts, disease spread, and marketing strategies.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/rafael_photo.jpg" alt="Rafael Menezes" loading="lazy">
+      <div class="p-body">
+        <h4>Rafael Menezes</h4>
+        <div class="role">Postdoctoral Researcher</div>
+        <p>Studies how individual movement behaviors shape population and community dynamics, using numerical simulations, spatial pattern analysis, and animal tracking data.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/vinicius_photo.jpg" alt="Vinicius Menuci" loading="lazy">
+      <div class="p-body">
+        <h4>Vinicius Menuci</h4>
+        <div class="role">Master Student</div>
+        <p>Studies how water–vegetation feedbacks shape plant interactions and large-scale spatial patterns, using nonlinear dynamics, pattern formation, and bifurcation theory.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/david_photo.jpg" alt="David Pinto-Ramos" loading="lazy">
+      <div class="p-body">
+        <h4>David Pinto-Ramos</h4>
+        <div class="role">Postdoctoral Researcher</div>
+        <p>Studies spatial pattern formation in arid ecosystems, combining nonlinear dynamics and statistical mechanics with remote-sensing and satellite imagery.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/roza_photo.jpg" alt="Roza Shah Mohammad Nejad" loading="lazy">
+      <div class="p-body">
+        <h4>Roza Shah Mohammad Nejad</h4>
+        <div class="role">Research Intern</div>
+        <p>Investigates how precipitation and wind patterns impact self-organized vegetation patterns in drylands. Supported by an Early Career Fellowship from the Scultetus Center at CASUS.</p>
+      </div>
+    </div>
+    <div class="person">
+      <img src="images/anudeep_photo.jpg" alt="Anudeep Surendran" loading="lazy">
+      <div class="p-body">
+        <h4>Anudeep Surendran</h4>
+        <div class="role">Postdoctoral Researcher</div>
+        <p>Explores how movement behavior shapes animal encounters and their ecological consequences, integrating stochastic simulations, analytics, and tracking data.</p>
+      </div>
+    </div>
+    <div class="person">
+      <div class="initials-avatar">KY</div>
+      <div class="p-body">
+        <h4>Khaled Yasein</h4>
+        <div class="role">Master Student</div>
+        <p>Studies stochastic evolutionary dynamics, focused on how spatial structure and quorum-sensing regulation jointly shape the evolutionary stability of cooperation in microbial systems.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="alumni-group">
+    <h3 class="sub" style="margin-top:0;">Alumni</h3>
+    <h4>Postdocs</h4>
+    <ul>
+      <li>Gabriel A. Maciel (2020–2022) — now Data Scientist at Carpa Analytics, Curitiba, Brazil.</li>
+      <li>Vivian Dornelas (2021–2023) — now Assistant Professor, Federal Univ. South of Bahia, Brazil.</li>
+      <li>Jesus M. Encinas (2022) — now postdoc, University of Padova, Italy.</li>
+      <li>Pablo de Castro (2022–2023) — now Assistant Professor, University of São Paulo, Brazil.</li>
+      <li>Ian Braga (2025–2026) — now postdoc, Academia Sinica, Taiwan.</li>
+    </ul>
+    <h4>PhD Students</h4>
+    <ul>
+      <li>Nathan Silvano (2024) — now postdoc, IFISC, Mallorca, Spain (co-supervised with Daniel Barci, UERJ, Brazil). <a href="https://www.bdtd.uerj.br:8443/handle/1/24034" target="_blank">Thesis</a></li>
+      <li>Rafael Menezes (2025) — now postdoc, ICTP-SAIFR, São Paulo, Brazil. <a href="https://www.teses.usp.br/teses/disponiveis/41/41134/tde-16042025-162541/pt-br.php" target="_blank">Thesis</a></li>
+    </ul>
+    <h4>Master Students</h4>
+    <ul>
+      <li>Benjamin Garcia de Figueiredo (2020–2023) — now PhD student, Princeton University. <a href="https://repositorio.unesp.br/entities/publication/29a7fed2-814b-446d-ac9f-e229b65afd40/full" target="_blank">Thesis</a></li>
+      <li>João Valeriano (2021–2023) — now PhD student, Turing Center for Living Systems, Aix-Marseille University. <a href="https://repositorio.unesp.br/entities/publication/3dbadfc1-0e25-4c56-8bfb-23b57d99a619" target="_blank">Thesis</a></li>
+      <li>Daniel Jorge (2021–2023) — now PhD student, Princeton University. <a href="https://repositorio.unesp.br/entities/publication/53776e4f-bf8f-4d9b-8881-b45b52248517/full" target="_blank">Thesis</a></li>
+      <li>Jairo M. Rojas (2019–2020) — now PhD student, University of Illinois at Urbana-Champaign. <a href="https://repositorio.unesp.br/entities/publication/45b7ff45-19d4-40a5-adf4-b43c1c83f7c1/full" target="_blank">Thesis</a></li>
+      <li>Rodrigo Martinez (2018, co-supervised with Manuel Matías, IFISC) — now postdoc, Donostia Int. Physics Center. <a href="https://ifisc.uib-csic.es/en/publications/a-consumer-resource-description-of-public-goods-pr/" target="_blank">Thesis</a></li>
+      <li>Victor Buendía (2017, co-supervised with Manuel Matías, IFISC) — now senior postdoc, Bocconi University. <a href="https://ifisc.uib-csic.es/en/publications/modelling-quorum-sensing-mechanisms-in-bacterial-p/" target="_blank">Thesis</a></li>
+    </ul>
+    <h4>Visiting Students</h4>
+    <ul>
+      <li>Matheus Bongestab (2024) — now Postdoc, Instituto Superior Técnico, Lisbon, Portugal.</li>
+      <li>Belén Hidalgo (2024) — now PhD student, Max Planck Institute for Dynamics and Self-Organization, Göttingen, Germany.</li>
+      <li>Pablo Gaitán Ruz (2025) — now Undergraduate student, Universidad de Granada, Spain.</li>
+      <li>Roza Shah Mohammad Nejad (2025) — now Master student, TU Bergakademie Freiberg, Germany.</li>
+      <li>Maksim Prusakov (2025) — now Master student, TU Dresden, Germany.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div>Ricardo Martinez-Garcia · Young Investigator Group Leader, CASUS-HZDR</div>
+  <div style="margin-top:6px;">Last update: July 2026</div>
+</footer>
+<script>
+(function(){
+  var members = [
+    // ALUMNI
+    { name: "Gabriel Maciel", role: "Postdoc", city: "Curitiba (Brazil)", lat: -25.43, lon: -49.27, type: "alumni" },
+    { name: "Vivian Dornelas", role: "Postdoc", city: "Rio de Janeiro (Brazil)", lat: -23.71, lon: -43.17, type: "alumni" },
+    { name: "Jesús Encinas", role: "Postdoc", city: "La Paz (Bolivia)", lat: -16.50, lon: -68.15, type: "alumni" },
+    { name: "Pablo de Castro", role: "Postdoc", city: "Recife (Brazil)", lat: -8.95, lon: -35.78, type: "alumni" },
+    { name: "Nathan Silvano", role: "PhD student", city: "Rio de Janeiro (Brazil)", lat: -22.11, lon: -43.17, type: "alumni" },
+    { name: "Benjamin Garcia de Figueiredo", role: "Master student", city: "São Carlos (Brazil)", lat: -22.01, lon: -47.89, type: "alumni" },
+    { name: "João Valeriano", role: "Master student", city: "Brasília (Brazil)", lat: -15.78, lon: -47.93, type: "alumni" },
+    { name: "Daniel Jorge", role: "Master student", city: "Salvador (Brazil)", lat: -12.97, lon: -40.00, type: "alumni" },
+    { name: "Rafael Menezes", role: "PhD student", city: "Salvador (Brazil)", lat: -12.97, lon: -34.00, type: "alumni" },
+    { name: "Jairo Rojas", role: "Master student", city: "Lima (Peru)", lat: -12.05, lon: -77.04, type: "alumni" },
+    { name: "Rodrigo Martinez-Peña", role: "Master student", city: "Salamanca (Spain)", lat: 40.97, lon: -5.66, type: "alumni" },
+    { name: "Víctor Buendía", role: "Master student", city: "Granada (Spain)", lat: 37.88, lon: -3.60, type: "alumni" },
+    { name: "Matheus Bongestab", role: "Visiting PhD student", city: "João Pessoa (Brazil)", lat: -7.12, lon: -34.86, type: "alumni" },
+    { name: "Belén Hidalgo", role: "Summer intern", city: "Santiago (Chile)", lat: -34.25, lon: -70.67, type: "alumni" },
+    { name: "Ian Braga", role: "Postdoc", city: "Serra do Cipó MG (Brazil)", lat: -19.18, lon: -43.60, type: "alumni" },
+    { name: "Pablo Gaitán Ruz", role: "Summer intern", city: "Granada (Spain)", lat: 36.48, lon: -3.60, type: "alumni" },
+    { name: "Maksim Prusakov", role: "Research assistant", city: "Saint Petersburg (Russia)", lat: 59.93, lon: 30.32, type: "alumni" },
+    // CURRENT MEMBERS
+    { name: "Ricardo Martinez-Garcia", role: "Group Leader", city: "Pontevedra (Spain)", lat: 42.43, lon: -8.64, type: "current" },
+    { name: "Timon Althaus", role: "Master student", city: "Darmstadt (Germany)", lat: 49.87, lon: 8.65, type: "current" },
+    { name: "Zihao Liu", role: "PhD student", city: "Xi'an (China)", lat: 34.27, lon: 108.93, type: "current" },
+    { name: "Paulo E. de Cerqueira Junior", role: "PhD student", city: "Natal (Brazil)", lat: -4.89, lon: -34.31, type: "current" },
+    { name: "Anudeep Surendran", role: "Postdoc", city: "Thalassery (India)", lat: 11.75, lon: 75.49, type: "current" },
+    { name: "Melissa Fuentealba", role: "PhD student", city: "Concepción (Chile)", lat: -36.82, lon: -73.05, type: "current" },
+    { name: "Rafael Menezes", role: "Postdoc", city: "Salvador (Brazil)", lat: -12.97, lon: -37.00, type: "current" },
+    { name: "Vinicius Menuci", role: "Master student", city: "Porto Alegre (Brazil)", lat: -30.03, lon: -51.23, type: "current" },
+    { name: "David Pinto-Ramos", role: "Postdoc", city: "Santiago (Chile)", lat: -32.65, lon: -70.67, type: "current" },
+    { name: "Roza Shah Mohammad Nejad", role: "Research assistant", city: "Sanandaj (Iran)", lat: 35.31, lon: 46.99, type: "current" },
+    { name: "Khaled Yasein", role: "Master student", city: "Cairo (Egypt)", lat: 30.04, lon: 31.24, type: "current" },
+  ];
+
+  var currentMembers = members.filter(function(m){ return m.type === "current"; });
+  var alumni = members.filter(function(m){ return m.type === "alumni"; });
+
+  function makeTrace(group, color, label){
+    return {
+      type: "scattergeo",
+      mode: "markers",
+      name: label,
+      lat: group.map(function(m){ return m.lat; }),
+      lon: group.map(function(m){ return m.lon; }),
+      text: group.map(function(m){ return "<b>" + m.name + "</b><br>" + (m.role ? m.role + "<br>" : "") + m.city; }),
+      hoverinfo: "text",
+      marker: { size: 10, color: color, line: { width: 2, color: "#fff" }, opacity: 0.95 },
+      showlegend: false,
+    };
+  }
+
+  var layout = {
+    geo: {
+      projection: { type: "natural earth" },
+      showland: true, landcolor: "#e5e1db",
+      showocean: true, oceancolor: "#c5d9e6",
+      showlakes: true, lakecolor: "#c5d9e6",
+      showcountries: true, countrycolor: "#b8b2a8", countrywidth: 0.5,
+      showcoastlines: true, coastlinecolor: "#b8b2a8", coastlinewidth: 0.5,
+      showframe: false, bgcolor: "#c5d9e6",
+      lonaxis: { range: [-130, 150] }, lataxis: { range: [-57, 85] },
+    },
+    margin: { l: 0, r: 0, t: 0, b: 0 },
+    paper_bgcolor: "transparent",
+    dragmode: false,
+  };
+
+  var wrap = document.getElementById("group-map");
+  layout.width = wrap.offsetWidth || 820;
+  layout.height = Math.round(layout.width * 0.5);
+
+  Plotly.newPlot("group-map",
+    [ makeTrace(currentMembers, "#E24B4A", "Current member"), makeTrace(alumni, "#378ADD", "Alumni") ],
+    layout,
+    { displayModeBar: false, responsive: true, scrollZoom: false }
+  );
+
+  window.addEventListener("resize", function(){
+    var w = wrap.offsetWidth;
+    Plotly.relayout("group-map", { width: w, height: Math.round(w * 0.5) });
+  });
+})();
+</script>
+</body>
+</html>

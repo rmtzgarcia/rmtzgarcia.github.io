@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricardo Martinez-Garcia — Publications</title>
+<style>
+  :root{
+    --ink:#1b2430;
+    --muted:#5b6674;
+    --accent:#2f5d4f;
+    --accent-soft:#e8efec;
+    --line:#e2e5e9;
+    --bg:#fbfbfa;
+    --card:#ffffff;
+    --serif: "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,251,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:980px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  }
+  nav .nav-left{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  nav .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.2px;}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap;}
+  nav .site-logo{height:46px;width:auto;display:block;}
+  nav ul li a{
+    color:var(--muted);font-size:.92rem;font-weight:500;
+    padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  nav ul li a:hover, nav ul li a.active{color:var(--ink);border-color:var(--accent);text-decoration:none;}
+
+  .hero{
+    max-width:980px;margin:0 auto;padding:64px 24px 40px;
+    display:flex;gap:44px;align-items:center;flex-wrap:wrap;
+  }
+  .hero img{
+    width:190px;height:190px;object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.10);
+  }
+  .hero-text h1{
+    font-family:var(--serif);font-size:2.3rem;margin:0 0 6px;font-weight:600;
+  }
+  .hero-text p.tagline{color:var(--muted);font-size:1.05rem;margin:0 0 14px;max-width:520px;}
+  .hero-links a{
+    display:inline-block;margin-right:14px;font-size:.92rem;font-weight:600;
+  }
+
+  section{max-width:980px;margin:0 auto;padding:48px 24px;}
+  section + section{border-top:1px solid var(--line);}
+  section h2{
+    font-family:var(--serif);font-size:1.65rem;margin:0 0 26px;font-weight:600;
+  }
+  section h3.sub{
+    font-family:var(--serif);font-size:1.2rem;margin:34px 0 10px;color:var(--accent);font-weight:600;
+  }
+  section h3.sub:first-of-type{margin-top:0;}
+  section p{color:#333;margin:0 0 14px;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media (max-width:720px){.cols{grid-template-columns:1fr;}}
+
+  .entry-list{list-style:none;margin:0;padding:0;}
+  .entry-list li{
+    padding:10px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:74px 1fr;gap:14px;font-size:.95rem;
+  }
+  .entry-list li:last-child{border-bottom:none;}
+  .entry-list .yr{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;}
+
+  .pub-list{list-style:none;margin:0;padding:0;}
+  .pub-list li{
+    padding:14px 0;border-bottom:1px solid var(--line);font-size:.94rem;color:#2a2f36;
+  }
+  .pub-list li:last-child{border-bottom:none;}
+  .pub-list .links{margin-left:6px;}
+  .pub-legend{color:var(--muted);font-size:.85rem;margin-bottom:22px;font-style:italic;}
+
+  .tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .tabs button{
+    font-family:var(--sans);font-size:.88rem;font-weight:600;
+    background:var(--accent-soft);color:var(--accent);border:none;border-radius:20px;
+    padding:8px 16px;cursor:pointer;transition:.15s;
+  }
+  .tabs button.active{background:var(--accent);color:#fff;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .people-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px;
+  }
+  .person{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .person img{width:100%;height:170px;object-fit:cover;display:block;}
+  .initials-avatar{
+    width:100%;height:170px;display:flex;align-items:center;justify-content:center;
+    background:#e4e6e9;
+    color:#8a929c;font-family:var(--serif);font-size:2.2rem;font-weight:600;letter-spacing:1px;
+  }
+  .map-wrap{max-width:820px;margin:0 auto 40px;}
+  .map-legend{display:flex;gap:24px;justify-content:center;margin-top:10px;font-size:.85rem;color:var(--muted);}
+  .map-legend .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .person .p-body{padding:14px 16px 18px;}
+  .person .p-body h4{margin:0 0 2px;font-size:1rem;font-family:var(--serif);}
+  .person .p-body .role{color:var(--accent);font-size:.82rem;font-weight:600;margin-bottom:8px;}
+  .person .p-body .co{color:var(--muted);font-size:.78rem;font-style:italic;margin-bottom:8px;}
+  .person .p-body p{font-size:.85rem;color:#444;margin:0;}
+
+  .alumni-group{margin-top:36px;}
+  .alumni-group h4{font-family:var(--serif);font-size:1.02rem;margin:22px 0 8px;}
+  .alumni-group ul{margin:0;padding-left:18px;color:#333;font-size:.9rem;}
+  .alumni-group ul li{margin-bottom:6px;}
+
+  .course{
+    border-left:3px solid var(--accent);padding:6px 0 6px 18px;margin-bottom:22px;
+  }
+  .course .yr-title{font-weight:700;margin-bottom:2px;}
+  .course .meta{color:var(--muted);font-size:.88rem;}
+
+  footer{
+    max-width:980px;margin:0 auto;padding:40px 24px 60px;color:var(--muted);font-size:.85rem;
+  }
+
+  .empty-note{color:var(--muted);font-style:italic;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <div class="nav-left">
+      <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="publications.html" class="active">Publications</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <a href="index.html"><img class="site-logo" src="images/logo.png" alt="Dynamics of Complex Living Systems logo"></a>
+  </nav>
+</header>
+
+<section id="publications">
+  <h2>Publications</h2>
+  <p class="pub-legend">Underlined names belong to group members · * = equal contribution, shared first authorship · # = corresponding author</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="selected">Selected</button>
+    <button class="tab-btn" data-tab="chrono">Chronological</button>
+    <button class="tab-btn" data-tab="chapters">Book Chapters</button>
+    <button class="tab-btn" data-tab="preprints">Preprints</button>
+  </div>
+
+  <div class="tab-panel active" id="selected">
+    <ul class="pub-list">
+      <li><u>D. Pinto-Ramos</u> &amp; <strong>R. Martinez-Garcia</strong><sup>#</sup>. How spatial patterns can lead to less resilient ecosystems. <em>Proc. National Academy of Sciences USA</em> 123 (14) e2511994123 (2026) <span class="links">(<a href="https://arxiv.org/pdf/2505.08671" target="_blank">PDF</a>)</span>.</li>
+      <li><u>R. Menezes</u>, J.M. Calabrese, W.F. Fagan, P.I. Prado, <strong>R. Martinez-Garcia</strong><sup>#</sup>. The range-resident logistic model: a new framework to formalize the population-dynamics consequences of range residency. <em>Ecology Letters</em>, 28:e70269 (2025) <span class="links">(<a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/ele.70269" target="_blank">PDF</a>)</span>.</li>
+      <li>C. Cabal<sup>*</sup>, <u>G.A. Maciel</u><sup>*</sup>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Plant antagonistic facilitation across environmental gradients: a soil-resource ecosystem engineering model. <em>New Phytologist</em> 244, 670-682 (2024) <span class="links">(<a href="https://nph.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/nph.20053" target="_blank">PDF</a>)</span>.</li>
+      <li>E. Ser-Giacomi<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, S. Dutkiewicz, M.J. Follows. Dilution-driven heterogeneity enhances plankton productivity in Lagrangian ecosystems. <em>Nature Communications</em>, 14, 6092 (2023) <span class="links">(<a href="https://www.nature.com/articles/s41467-023-41469-2.pdf" target="_blank">PDF</a>)</span>.</li>
+      <li><u>G.A. Maciel</u>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Enhanced species coexistence in Lotka-Volterra competition models due to nonlocal interactions. <em>Journal of Theoretical Biology</em>, 530, 110872 (2021) <span class="links">(<a href="https://www.sciencedirect.com/science/article/abs/pii/S0022519321002915" target="_blank">PDF</a>; <a href="https://arxiv.org/abs/2012.06249" target="_blank">preprint</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, C. López, F. Vazquez. Species exclusion and coexistence in a noisy voter model with a competition-colonization tradeoff. <em>Physical Review E</em> 103, 032406 (2021) <span class="links">(<a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.103.032406" target="_blank">PDF</a>)</span>.</li>
+      <li>C. Cabal<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, A. de Castro, F. Valladares, S.W. Pacala. The exploitative segregation of plant roots. <em>Science</em> 370 (6521), 1197-1199 (2020). Journal cover <span class="links">(<a href="https://www.science.org/doi/10.1126/science.aba9877" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong>, C.H. Fleming, R. Seppelt, W.F. Fagan, J.M. Calabrese<sup>#</sup>. How range-residency and long-range perception change encounter rates. <em>J Theor Biol</em>, 498, 110267 (2020) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0022519320301223" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, T. Mueller, K.A. Olson, C. López. Optimizing the search for resources by sharing information: Mongolian gazelles as a case study. <em>Phys Rev Lett</em>, 110, 248106 (2013). Editor's Suggestion and Physics Focus highlight <span class="links">(<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.110.248106" target="_blank">PDF</a>)</span>.</li>
+    </ul>
+  </div>
+
+  <div class="tab-panel" id="chrono">
+    <ul class="pub-list">
+      <li>A. Martinez ... <strong>R. Martinez-Garcia</strong> ... et al. Flagship species as subterranean monitoring tools: a case study in anchialine ecosystems in Lanzarote (Canary Islands). Preprint, Research Square, doi:10.21203/rs.3.rs-9141619/v1 <span class="links">(<a href="https://www.researchsquare.com/article/rs-9141619/v1" target="_blank">PDF</a>)</span>.</li>
+      <li><u>M. Bongestab</u>, <u>D. Pinto-Ramos</u>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Spatial self-organization stabilizes obligate mutualism through pattern formation. arXiv:2512.00254 (2025) <span class="links">(<a href="https://arxiv.org/pdf/2512.00254" target="_blank">PDF</a>)</span>.</li>
+      <li><u>D. Pinto-Ramos</u> &amp; <strong>R. Martinez-Garcia</strong><sup>#</sup>. How spatial patterns can lead to less resilient ecosystems. <em>PNAS</em> 123 (14) e2511994123 (2026) <span class="links">(<a href="https://arxiv.org/pdf/2505.08671" target="_blank">PDF</a>)</span>.</li>
+      <li><u>B. Garcia de Figueiredo</u>, I. Silva, M.J. Noonan, C.H. Fleming, W.F. Fagan, J.M. Calabrese, <strong>R. Martinez-Garcia</strong><sup>#</sup>. How animal movement influences wildlife-vehicle collision risk: a mathematical framework for range-resident species. <em>Journal of Theoretical Biology</em> 112471, in press (2026) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0022519326000962" target="_blank">PDF</a>, <a href="https://doi.org/10.48550/arXiv.2507.17058" target="_blank">arXiv</a>)</span>.</li>
+      <li>J. Van Der Voort<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, A. Doelman. Vegetation pattern formation induced by local growth outpacing susceptibility to non-local competition. <em>Journal of Theoretical Biology</em> 626, 112441 (2026) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0022519326000664" target="_blank">PDF</a>)</span>.</li>
+      <li><u>R. Menezes</u>, J.M. Calabrese, W.F. Fagan, P.I. Prado, <strong>R. Martinez-Garcia</strong><sup>#</sup>. The range-resident logistic model. <em>Ecology Letters</em> 28:e70269 (2025) <span class="links">(<a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/ele.70269" target="_blank">PDF</a>)</span>.</li>
+      <li><u>N.O. Silvano</u>, J. Valeriano, E. Hernández-García, C. López, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Flow spatial structure determines pattern instabilities in nonlocal models of population dynamics. <em>Communications Physics</em> 8, 326 (2025) <span class="links">(<a href="https://arxiv.org/pdf/2409.04268" target="_blank">PDF</a>)</span>.</li>
+      <li><u>A. Surendran</u><sup>*</sup>, <u>D. Pinto-Ramos</u><sup>*</sup>, <u>R. Menezes</u><sup>*</sup>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Improving the mean-field approximation in continuous models of population dynamics with nonlocal dispersal. <em>Physica D</em> 477, 134703 (2025) <span class="links">(<a href="https://arxiv.org/pdf/2410.23125" target="_blank">PDF</a>)</span>.</li>
+      <li>W.F. Fagan<sup>#</sup>, A. Krishnan, Q. Liao, C.H. Fleming, D. Liao, C. Lamb, B. Patterson, T. Wheeldon, <strong>R. Martinez-Garcia</strong>, J. Menezes, M.J. Noonan, E. Gurarie, J.M. Calabrese. Intraspecific encounters can lead to reduced range overlap. <em>Movement Ecology</em> 12, 58 (2024) <span class="links">(<a href="https://link.springer.com/article/10.1186/s40462-024-00501-w" target="_blank">PDF</a>)</span>.</li>
+      <li><u>V. Dornelas</u><sup>*</sup>, <u>P. de Castro</u><sup>*</sup>, J.M. Calabrese, W.F. Fagan, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Movement bias in asymmetric landscapes and its impact on population distribution and critical habitat size. <em>Proc. Royal Society A</em> (2024) <span class="links">(<a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2024.0185" target="_blank">PDF</a>)</span>.</li>
+      <li>C. Cabal<sup>*</sup>, <u>G.A. Maciel</u><sup>*</sup>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Plant antagonistic facilitation across environmental gradients. <em>New Phytologist</em> 244, 670-682 (2024) <span class="links">(<a href="https://nph.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/nph.20053" target="_blank">PDF</a>)</span>.</li>
+      <li>E.H. Colombo, <strong>R. Martinez-Garcia</strong>, J.M. Calabrese, C. López, E. Hernández-García<sup>#</sup>. Pulsed interactions unify reaction–diffusion and spatial nonlocal models for biological pattern formation. <em>J. Stat. Mech.</em> 3, 034001 (2024) <span class="links">(<a href="https://iopscience.iop.org/article/10.1088/1742-5468/ad2b57/pdf" target="_blank">PDF</a>)</span>.</li>
+      <li><u>D.C.P. Jorge</u>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Demographic effects of spatial patterns in the presence of a component Allee effect. <em>J. Royal Society Interface</em> 21, 20240042 (2024) <span class="links">(<a href="https://arxiv.org/abs/2305.13414" target="_blank">preprint</a>)</span>.</li>
+      <li>E. Ser-Giacomi<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, S. Dutkiewicz, M.J. Follows. Dilution-driven heterogeneity enhances plankton productivity in Lagrangian ecosystems. <em>Nature Communications</em> 14, 6092 (2023) <span class="links">(<a href="https://www.nature.com/articles/s41467-023-41469-2.pdf" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, C. Cabal, J.M. Calabrese, E. Hernández-García, C.E. Tarnita, C. López, J.A. Bonachela. Integrating theory and experiments to link local mechanisms and ecosystem-level consequences of vegetation patterns in drylands. <em>Chaos, Solitons & Fractals</em> 166, 112881 (2023) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0960077922010608" target="_blank">PDF</a>)</span>.</li>
+      <li>M.P. Veldhuis<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, V. Deblauwe, V. Dakos. Remotely-sensed slowing down in spatially patterned dryland ecosystems. <em>Ecography</em>, e06139 (2022) <span class="links">(<a href="https://nsojournals.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/ecog.06139" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, C.E. Tarnita, J.A. Bonachela. Spatial patterns in ecological systems: from microbial colonies to ecosystem landscapes. <em>Emerging Topics in Life Sciences</em> ETLS20210282 (2022) <span class="links">(<a href="https://portlandpress.com/emergtoplifesci/article-abstract/6/3/245/231411" target="_blank">PDF</a>)</span>.</li>
+      <li>J. Nauta, P. Simoens, Y. Khaluf, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Foraging behavior and patch size distribution jointly determine population dynamics in fragmented landscapes. <em>J. Royal Society Interface</em> 19 (191), 20220103 (2022) <span class="links">(<a href="https://royalsocietypublishing.org/doi/epdf/10.1098/rsif.2022.0103" target="_blank">PDF</a>)</span>.</li>
+      <li><u>G.A. Maciel</u>, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Enhanced species coexistence in Lotka-Volterra competition models due to nonlocal interactions. <em>J. Theoretical Biology</em> 530, 110872 (2021) <span class="links">(<a href="https://arxiv.org/abs/2012.06249" target="_blank">preprint</a>)</span>.</li>
+      <li>M.J. Noonan, <strong>R. Martinez-Garcia</strong>, G.H. Davis, M.C. Crofoot, R. Kays, B.T. Hirsch, E. Payne, A. Sih, D.L. Sinn, O. Spiegel, W.F. Fagan, C.H. Fleming, J.M. Calabrese<sup>#</sup>. Estimating encounter location distributions from animal tracking data. <em>Methods in Ecology and Evolution</em> 12(7), 1158-1173 (2021) <span class="links">(<a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13597" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, C. López, F. Vazquez. Species exclusion and coexistence in a noisy voter model with a competition-colonization tradeoff. <em>Physical Review E</em> 103, 032406 (2021) <span class="links">(<a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.103.032406" target="_blank">PDF</a>)</span>.</li>
+      <li>C. Cabal, <strong>R. Martinez-Garcia</strong>, A. de Castro, F. Valladares, S.W. Pacala. Future paths for the exploitative segregation of plant roots. <em>Plant Signaling and Behavior</em> 1891755 (2021) <span class="links">(<a href="https://www.tandfonline.com/doi/full/10.1080/15592324.2021.1891755" target="_blank">PDF</a>)</span>.</li>
+      <li>C. Cabal<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, A. de Castro, F. Valladares, S.W. Pacala. The exploitative segregation of plant roots. <em>Science</em> 370 (6521), 1197-1199 (2020). Journal cover <span class="links">(<a href="https://www.science.org/doi/10.1126/science.aba9877" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong>, C.H. Fleming, R. Seppelt, W.F. Fagan, J.M. Calabrese<sup>#</sup>. How range-residency and long-range perception change encounter rates. <em>J Theor Biol</em> 498, 110267 (2020) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0022519320301223" target="_blank">PDF</a>)</span>.</li>
+      <li>F. W. Rossine<sup>*</sup>, <strong>R. Martinez-Garcia</strong><sup>*</sup>, A.E. Sgro, T. Gregor<sup>#</sup>, C.E. Tarnita<sup>#</sup>. Eco-evolutionary consequences of loners. <em>PLoS Biology</em>, 18(3), e3000642 (2020) <span class="links">(<a href="https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.3000642&type=printable" target="_blank">PDF</a>)</span>.</li>
+      <li>E.H. Colombo<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, C. López, E. Hernández-García. Spatial eco-evolutionary feedbacks mediate coexistence in prey-predator systems. <em>Scientific Reports</em> 9, 18161 (2019) <span class="links">(<a href="https://www.nature.com/articles/s41598-019-54510-6" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong>, C.D. Nadell<sup>#</sup>, R. Hartmann, K. Drescher, J.A. Bonachela<sup>#</sup>. Cell adhesion and fluid flow jointly initiate genotype spatial distribution in biofilms. <em>PLoS Comp Biol</em> 14(4): e1006094 (2018) <span class="links">(<a href="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006094&type=printable" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong>, C.E. Tarnita<sup>#</sup>. Seasonality can induce coexistence of multiple bet-hedging strategies in <em>Dictyostelium discoideum</em>. <em>J Theor Biol</em> 426, 104-116 (2017).</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, C. López. Online games: a novel approach to explore how partial information influences human random searches. <em>Scientific Reports</em> 7, 40029 (2017) <span class="links">(<a href="https://www.nature.com/articles/srep40029" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong>, C.E. Tarnita<sup>#</sup>. Lack of ecological and life history context can create the illusion of social interactions in <em>Dictyostelium discoideum</em>. <em>PLoS Comp Biol</em> 12(12): e1005246 (2016) <span class="links">(<a href="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1005246&type=printable" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, C. Murgui, E. Hernández-García, C. López. Pattern formation in populations with density-dependent movement and two interaction scales. <em>PLoS ONE</em> 10(7): e0132261 (2015) <span class="links">(<a href="https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0132261&type=printable" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, C. López, F. Vazquez. Optimal recruitment strategies in groups of interacting walkers with leaders. <em>Phys Rev E</em>, 91, 022117 (2015) <span class="links">(<a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.91.022117" target="_blank">PDF</a>)</span>.</li>
+      <li>C.E. Tarnita<sup>*#</sup>, A. Washburne<sup>*</sup>, <strong>R. Martinez-Garcia</strong>, A.E. Sgro, S.A. Levin. Fitness tradeoffs between spores and nonaggregating cells can explain the coexistence of diverse genotypes in cellular slime molds. <em>PNAS</em> 12(9), 2776-2781 (2015) <span class="links">(<a href="https://www.pnas.org/doi/epdf/10.1073/pnas.1424242112" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, E. Hernández-García, C. López. Minimal mechanisms for vegetation patterns in semiarid regions. <em>Philos. T. R. Soc. A</em> 372(2027): 20140068 (2014) <span class="links">(<a href="https://arxiv.org/abs/1402.1077" target="_blank">preprint</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, C. López. Optimal search in interacting populations: Gaussian jumps versus Lévy flights. <em>Phys Rev E</em> 89, 032718 (2014) <span class="links">(<a href="https://arxiv.org/abs/1401.7124" target="_blank">preprint</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, T. Mueller, K.A. Olson, C. López. Optimizing the search for resources by sharing information: Mongolian gazelles as a case study. <em>Phys Rev Lett</em> 110, 248106 (2013). Editor's Suggestion and Physics Focus highlight <span class="links">(<a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.110.248106" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, E. Hernández-García, C. López. Vegetation pattern formation in semiarid systems without facilitative mechanisms. <em>Geophys Res Lett</em> 40, 6143–6147 (2013) <span class="links">(<a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1002/2013GL058797" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, J.M. Calabrese, C. López. Spatial patterns in mesic savannas: the local facilitation limit and the role of demographic stochasticity. <em>J Theor Biol</em> 333, 156-165 (2013) <span class="links">(<a href="https://www.sciencedirect.com/science/article/abs/pii/S0022519313002531" target="_blank">PDF</a>)</span>.</li>
+      <li><strong>R. Martinez-Garcia</strong><sup>#</sup>, F. Vázquez, C. López, M.A. Muñoz. Temporal disorder in up-down symmetric systems. <em>Phys Rev E</em> 85, 051125 (2012) <span class="links">(<a href="https://digital.csic.es/bitstream/10261/79507/1/temporal_disorder_Martinez.pdf" target="_blank">PDF</a>)</span>.</li>
+      <li>S. Brouard<sup>#</sup>, R. Martinez. Cavity-mediated entanglement between distant atoms: effect of spatial dispersion. <em>Phys Lett A</em> 375, 1640-1645 (2011) <span class="links">(<a href="https://www.sciencedirect.com/science/article/abs/pii/S0375960111002921" target="_blank">PDF</a>)</span>.</li>
+    </ul>
+  </div>
+
+  <div class="tab-panel" id="chapters">
+    <ul class="pub-list">
+      <li>C López<sup>#</sup>, E.H. Colombo, E. Hernández-García, <strong>R. Martinez-Garcia</strong>. Spatial competition and repulsion: pattern formation and the role of movement. In <em>The Mathematics of Movement: an Interdisciplinary Approach to Mutual Challenges in Animal Ecology and Cell Biology</em>, Ch. 11 (Eds. L. Giuggioli & P. Maini), Springer Nature, Switzerland (2026).</li>
+      <li>C.H. Fleming<sup>#</sup>, W.F. Fagan, J.M. Alston, G. Anand, N. Hirama, E.Y. Lin, <strong>R. Martinez-Garcia</strong>, M.J. Noonan, J.M. Calabrese. Spatial distributions for animal movement processes. In <em>The Mathematics of Movement</em>, Ch. 7 (Eds. L. Giuggioli & P. Maini), Springer Nature, Switzerland (2026).</li>
+      <li>S. Vallina<sup>#</sup>, <strong>R. Martinez-Garcia</strong>, S.L. Smith, J.A. Bonachela. Models in microbial ecology. <em>Encyclopedia of Microbiology</em>, 4th ed., Elsevier (2019).</li>
+    </ul>
+  </div>
+
+  <div class="tab-panel" id="preprints">
+    <ul class="pub-list">
+      <li><u>I. Braga</u>, L. Wardil, <strong>R. Martinez-Garcia</strong>. Fixation probabilities for multi-allele Moran dynamics with weak selection. arXiv:2604.12004 (2026) <span class="links">(<a href="https://doi.org/10.48550/arXiv.2604.12004" target="_blank">DOI</a>)</span>.</li>
+      <li>M. Tadej, <strong>R. Martinez-Garcia</strong>, M. Hecht. Extinction and persistence criteria in non-local Klausmeier model of vegetation dynamics on flat landscapes. arXiv:2601.06681 <span class="links">(<a href="https://doi.org/10.48550/arXiv.2601.06681" target="_blank">DOI</a>)</span>.</li>
+      <li>J. Liang, O. Peleg, C. Hui, P. Reich, Y. Gu, <strong>R. Martinez-Garcia</strong>. The architecture of forest intelligence: an evaluative framework.</li>
+      <li><u>A. Surendran</u>, J.M. Calabrese, W.F. Fagan, <strong>R. Martinez-Garcia</strong><sup>#</sup>. Using transient encounter rates to quantify spatial patterns of home-range organization. arXiv:2510.13017 (2025) <span class="links">(<a href="https://arxiv.org/abs/2510.13017" target="_blank">PDF</a>)</span>.</li>
+      <li><u>B. Garcia de Figueiredo</u>, J.M. Calabrese, W.F. Fagan, <strong>R. Martinez-Garcia</strong><sup>#</sup>. The structure of inter-reaction times in reaction-diffusion processes and consequences for counting statistics. arXiv:2409.11433 (2024) <span class="links">(<a href="https://arxiv.org/pdf/2409.11433" target="_blank">PDF</a>)</span>.</li>
+      <li>J.O. Abraham<sup>*#</sup>, <strong>R. Martinez-Garcia</strong><sup>*#</sup>, F. Gijsman, E.M. Phillips, C.E. Tarnita. Should I stay or should I go? Modeling the decision-making process behind ungulate partial migration. Submitted.</li>
+      <li>M.J. Noonan, <strong>R. Martinez-Garcia</strong>, C.H. Fleming, <u>B. Garcia de Figueiredo</u> et al. The search behavior of terrestrial mammals. bioRxiv 2022.12.31.521874 (2022) <span class="links">(<a href="https://www.biorxiv.org/content/10.1101/2022.12.31.521874v1.full.pdf" target="_blank">PDF</a>)</span>.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div>Ricardo Martinez-Garcia · Young Investigator Group Leader, CASUS-HZDR</div>
+  <div style="margin-top:6px;">Last update: July 2026</div>
+</footer>
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

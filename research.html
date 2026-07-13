@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ricardo Martinez-Garcia — Research</title>
+<style>
+  :root{
+    --ink:#1b2430;
+    --muted:#5b6674;
+    --accent:#2f5d4f;
+    --accent-soft:#e8efec;
+    --line:#e2e5e9;
+    --bg:#fbfbfa;
+    --card:#ffffff;
+    --serif: "Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;
+    --sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.6;
+  }
+  a{color:var(--accent);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+
+  header.site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,251,250,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:980px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  }
+  nav .nav-left{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  nav .brand{font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:.2px;}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap;}
+  nav .site-logo{height:46px;width:auto;display:block;}
+  nav ul li a{
+    color:var(--muted);font-size:.92rem;font-weight:500;
+    padding:6px 2px;border-bottom:2px solid transparent;
+  }
+  nav ul li a:hover, nav ul li a.active{color:var(--ink);border-color:var(--accent);text-decoration:none;}
+
+  .hero{
+    max-width:980px;margin:0 auto;padding:64px 24px 40px;
+    display:flex;gap:44px;align-items:center;flex-wrap:wrap;
+  }
+  .hero img{
+    width:190px;height:190px;object-fit:cover;border-radius:10px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.10);
+  }
+  .hero-text h1{
+    font-family:var(--serif);font-size:2.3rem;margin:0 0 6px;font-weight:600;
+  }
+  .hero-text p.tagline{color:var(--muted);font-size:1.05rem;margin:0 0 14px;max-width:520px;}
+  .hero-links a{
+    display:inline-block;margin-right:14px;font-size:.92rem;font-weight:600;
+  }
+
+  section{max-width:980px;margin:0 auto;padding:48px 24px;}
+  section + section{border-top:1px solid var(--line);}
+  section h2{
+    font-family:var(--serif);font-size:1.65rem;margin:0 0 26px;font-weight:600;
+  }
+  section h3.sub{
+    font-family:var(--serif);font-size:1.2rem;margin:34px 0 10px;color:var(--accent);font-weight:600;
+  }
+  section h3.sub:first-of-type{margin-top:0;}
+  section p{color:#333;margin:0 0 14px;}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:36px;}
+  @media (max-width:720px){.cols{grid-template-columns:1fr;}}
+
+  .entry-list{list-style:none;margin:0;padding:0;}
+  .entry-list li{
+    padding:10px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:74px 1fr;gap:14px;font-size:.95rem;
+  }
+  .entry-list li:last-child{border-bottom:none;}
+  .entry-list .yr{color:var(--accent);font-weight:700;font-variant-numeric:tabular-nums;}
+
+  .pub-list{list-style:none;margin:0;padding:0;}
+  .pub-list li{
+    padding:14px 0;border-bottom:1px solid var(--line);font-size:.94rem;color:#2a2f36;
+  }
+  .pub-list li:last-child{border-bottom:none;}
+  .pub-list .links{margin-left:6px;}
+  .pub-legend{color:var(--muted);font-size:.85rem;margin-bottom:22px;font-style:italic;}
+
+  .tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap;}
+  .tabs button{
+    font-family:var(--sans);font-size:.88rem;font-weight:600;
+    background:var(--accent-soft);color:var(--accent);border:none;border-radius:20px;
+    padding:8px 16px;cursor:pointer;transition:.15s;
+  }
+  .tabs button.active{background:var(--accent);color:#fff;}
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block;}
+
+  .people-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px;
+  }
+  .person{
+    background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+  }
+  .person img{width:100%;height:170px;object-fit:cover;display:block;}
+  .initials-avatar{
+    width:100%;height:170px;display:flex;align-items:center;justify-content:center;
+    background:#e4e6e9;
+    color:#8a929c;font-family:var(--serif);font-size:2.2rem;font-weight:600;letter-spacing:1px;
+  }
+  .map-wrap{max-width:820px;margin:0 auto 40px;}
+  .map-legend{display:flex;gap:24px;justify-content:center;margin-top:10px;font-size:.85rem;color:var(--muted);}
+  .map-legend .dot{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:middle;}
+  .person .p-body{padding:14px 16px 18px;}
+  .person .p-body h4{margin:0 0 2px;font-size:1rem;font-family:var(--serif);}
+  .person .p-body .role{color:var(--accent);font-size:.82rem;font-weight:600;margin-bottom:8px;}
+  .person .p-body .co{color:var(--muted);font-size:.78rem;font-style:italic;margin-bottom:8px;}
+  .person .p-body p{font-size:.85rem;color:#444;margin:0;}
+
+  .alumni-group{margin-top:36px;}
+  .alumni-group h4{font-family:var(--serif);font-size:1.02rem;margin:22px 0 8px;}
+  .alumni-group ul{margin:0;padding-left:18px;color:#333;font-size:.9rem;}
+  .alumni-group ul li{margin-bottom:6px;}
+
+  .course{
+    border-left:3px solid var(--accent);padding:6px 0 6px 18px;margin-bottom:22px;
+  }
+  .course .yr-title{font-weight:700;margin-bottom:2px;}
+  .course .meta{color:var(--muted);font-size:.88rem;}
+
+  footer{
+    max-width:980px;margin:0 auto;padding:40px 24px 60px;color:var(--muted);font-size:.85rem;
+  }
+
+  .empty-note{color:var(--muted);font-style:italic;}
+
+  .research-banner{width:100%;height:auto;border-radius:10px;margin-bottom:32px;display:block;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav>
+    <div class="nav-left">
+      <ul>
+      <li><a href="index.html">About</a></li>
+      <li><a href="research.html" class="active">Research</a></li>
+      <li><a href="publications.html">Publications</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="teaching.html">Teaching</a></li>
+      <li><a href="news.html">News</a></li>
+      </ul>
+    </div>
+    <a href="index.html"><img class="site-logo" src="images/logo.png" alt="Dynamics of Complex Living Systems logo"></a>
+  </nav>
+</header>
+
+<section id="research">
+  <h2>Research</h2>
+  <img src="images/research_banner.jpg" alt="Dynamics of Complex Living Systems: from individuals to communities across systems and scales — bacterial biofilms, insect aggregates, ungulate herds, vegetation patterns" class="research-banner">
+  <p>Our research focuses on understanding how organisms explore and respond to their local environment, and how these responses shape the outcome of larger-scale ecological processes — population abundances, species distributions, or ecosystem resilience. Using the mathematical formalism of statistical mechanics and intensive numerical simulations, our ultimate goal is to discern to what extent these larger-scale processes are emergent phenomena determined by organism-level behaviors, and to formalize this upscaling into unifying theoretical frameworks. We work across a diversity of systems and scales, with a recent primary focus on large terrestrial mammals exhibiting range-resident movement and dryland vegetation, where spatial patterns can be strikingly regular. In each system we develop mathematical models validated against empirical data, then use those models to make new, testable predictions — often in close collaboration with experimentalists and field ecologists across an extensive and growing network.</p>
+
+  <h3 class="sub">Vegetation Dynamics in Water-Limited Systems</h3>
+  <p>Drylands are home to roughly 35% of the world's population and cover about 40% of Earth's land surface, often in developing countries where the economy and human well-being depend strongly on ecosystem services. Understanding dryland dynamics — and predicting and mitigating their response to climate change — is a critical ecological and socio-economic issue. Dryland vegetation often self-organizes into regular spatial patterns such as rings, spots, and stripes, and theoretical work suggests these patterns indicate proximity to desertification transitions (Martinez-Garcia et al., 2023). We have developed a bottom-up approach combining mathematical modeling, greenhouse experiments, and analysis of field and satellite data to describe vegetation dynamics in drylands (Cabal et al., 2020), working from individual plants to whole ecosystems. At the individual level, our work revealed the mechanisms driving below-ground plant competition and how plant–soil feedback supports facilitation across stress gradients (Cabal et al., 2020; Cabal, Maciel & Martinez-Garcia, 2024) — resolving a long-standing debate about the drivers of below-ground plant interactions (see this <a href="https://www.youtube.com/watch?v=JU4mn_AJumI&ab_channel=ScienceMagazine" target="_blank">outreach movie</a>). At the ecosystem level, we combined satellite imagery from Sudan with remotely sensed vegetation biomass and precipitation time series to test how vegetation patterns anticipate impending desertification dynamics (Veldhuis et al., 2022).</p>
+
+  <h3 class="sub">Movement Ecology and Encounter Theory</h3>
+  <p>Our group applies stochastic calculus to investigate how patterns of individual movement, observed in animal tracking datasets, determine interactions among individuals and between individuals and landscape features such as roads or fences. Much of ecological theory — from species-interaction models to mathematical epidemiology — assumes organisms interact following the "law of mass action," a simplification that is incorrect for most real scenarios since it assumes organisms roam freely and are equally likely to interact with any other organism sharing their environment. Our research has produced a new family of encounter models and statistical estimators that relax this well-mixed assumption and account for real movement behavior (Martinez-Garcia et al., 2020; Noonan et al., 2021), showing that realistic encounter rates can be higher or lower than mass action predicts, with implications for higher ecological scales and for how animals interact with roads, power lines, and other infrastructure. We are currently extending this work to interaction statistics (Garcia de Figueiredo et al., 2024) and embedding these models into birth–death population dynamics frameworks (Menezes et al., 2025).</p>
+
+  <h3 class="sub">Spatial Population Dynamics</h3>
+  <p>In our more theoretical projects, we develop bottom-up mathematical frameworks to investigate how nonlinear feedbacks acting on individual movement and demographic rates shape population dynamics in space and time — asking to what extent long-range attraction/repulsion and growth activation/inhibition are system-independent drivers of spatial self-organization. We describe these processes from the individual level, accounting for inherent stochasticity, then use statistical mechanics and many-body physics techniques to upscale microscopic models to the population level, drawing on individual-based simulations, stochastic differential equations, random walk theory, interacting-particle systems, and partial integro-differential equations. Our results show the impact of long-range interactions and dispersal on ecological dynamics at scales ranging from spatial density patterns within a single generation (Martinez-Garcia et al., 2015; Dornelas, de Castro et al., 2024) to reversing the outcome of competitive exclusion (Martinez-Garcia et al., 2021; Maciel and Martinez-Garcia, 2021). Recent work shows aggregation can increase resilience in populations with Allee effects under environmental change (Jorge & Martinez-Garcia, 2024) and how environmental flows shape population spatial distributions and abundances (Silvano et al., 2024).</p>
+
+  <h3 class="sub">Microbial Systems</h3>
+  <p>Microbial systems are ideal for studying emergent phenomena due to their fast characteristic timescales and the ease of laboratory manipulation. Our group has investigated the ecology and evolution of social behaviors in multicellular colonies, using <em>Dictyostelium discoideum</em> aggregates (Tarnita et al., 2015; Martinez-Garcia & Tarnita 2016, 2017; Rossine, Martinez-Garcia et al., 2020) and flagellum-repressed <em>Vibrio cholerae</em> biofilms (Martinez-Garcia et al., 2018) as model organisms. Combining spatially explicit stochastic models with analysis of microscopy images from experimental setups, we work to identify which feedbacks between microbial traits (adhesiveness, shape, motility), behaviors (quorum-sensing regulated exoproduct release, dispersal strategies), and environmental features favor the evolution of social behaviors.</p>
+</section>
+
+<footer>
+  <div>Ricardo Martinez-Garcia · Young Investigator Group Leader, CASUS-HZDR</div>
+  <div style="margin-top:6px;">Last update: July 2026</div>
+</footer>
+
+</body>
+</html>
