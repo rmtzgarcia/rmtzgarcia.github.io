@@ -141,6 +141,34 @@
   }
 
   .empty-note{color:var(--muted);font-style:italic;}
+
+  .news-list{list-style:none;margin:0;padding:0;}
+  .news-item{
+    padding:24px 0;border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:118px 1fr;gap:20px;align-items:start;
+  }
+  .news-item:first-child{padding-top:0;}
+  .news-item:last-child{border-bottom:none;}
+  .news-item .date{
+    color:var(--accent);font-size:.82rem;font-weight:700;
+    font-variant-numeric:tabular-nums;padding-top:4px;
+  }
+  .news-item h3{
+    font-family:var(--serif);font-size:1.12rem;font-weight:600;margin:0 0 6px;line-height:1.35;
+  }
+  .news-item p{font-size:.92rem;color:#3a4049;margin:0;}
+  .news-body{display:flex;gap:22px;align-items:flex-start;flex-wrap:wrap;}
+  .news-text{flex:1 1 320px;min-width:0;}
+  .news-item figure{margin:0;flex:0 1 240px;}
+  .news-item figure img{
+    width:100%;display:block;border-radius:8px;border:1px solid var(--line);
+  }
+  .news-item figcaption{color:var(--muted);font-size:.78rem;font-style:italic;margin-top:6px;}
+  @media (max-width:720px){
+    .news-item{grid-template-columns:1fr;gap:4px;}
+    .news-item .date{padding-top:0;}
+    .news-item figure{flex:1 1 100%;}
+  }
 </style>
 </head>
 <body>
@@ -163,7 +191,68 @@
 
 <section id="news">
   <h2>News</h2>
-  <p class="empty-note">No news items are currently posted. Check back soon, or visit the <a href="https://sites.google.com/view/rmtzgarcia/news" target="_blank">original News page</a> for updates.</p>
+
+  <!-- To add an item, copy one block below and put it at the TOP of the list (newest first).
+       The <figure> is optional: delete it for a text-only item, or point the src at a file
+       you have dropped into images/. -->
+
+  <ol class="news-list">
+
+    <li class="news-item">
+      <div class="date"><time datetime="2026-09-14">September 2026</time></div>
+      <div class="news-body">
+        <div class="news-text">
+          <h3>Group reunion in Messina (Sicily)</h3>
+          <p>Rafael, Nathan and Pablo, group members and alumni, participated as invited speakers in the mini-symposium 'Recent trends in biomathematics: modeling patterns and collective dynamics from micro to macro' in the <a href="https://umi.dm.unibo.it/jm-ita-bra-2026/" target="_blank">2nd Joint Meeting Brazil-Italy in Mathematics</a>.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="date"><time datetime="2026-09-08">September 2026</time></div>
+      <div class="news-body">
+        <div class="news-text">
+          <h3>Matheus' paper on vegetation patterns and plant-pollinator stability is out in PLOS Ecosystems</h3>
+          <p>Matheus' project during his DAAD-CAPES internship in our group is finally published in PLOS Ecosystems' first issue (<a href="https://journals.plos.org/ecosystems/article?id=10.1371/journal.pesy.0000021" target="_blank">PDF</a>). Congrats Matheus and David!</p>
+        </div>
+        <!-- <figure>
+          <img src="images/news_plos_ecosystems.jpg" alt="" loading="lazy">
+          <figcaption>Caption.</figcaption>
+        </figure> -->
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="date"><time datetime="2026-09-01">September 2026</time></div>
+      <div class="news-body">
+        <div class="news-text">
+          <h3>Saira's internship is over</h3>
+          <p>Saira is leaving us after finishing her HZDR Summer-program internship under David's supervision. In her time with us, she learned about vegetation pattern formation in drylands and worked on incorporating precipitation data into reaction-diffusion models describing this phenomenon.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="date"><time datetime="2026-08">August 2026</time></div>
+      <div class="news-body">
+        <div class="news-text">
+          <h3>Vinicius arrives in Görlitz</h3>
+          <p>Vinicius is finally in Germany for the second year of his Master's studies, co-supervised by Ricardo and Rafael. He will stay with us for one year to conduct his thesis research on how range-resident movement shapes seed dispersal and emergent vegetation patterns in plant populations.</p>
+        </div>
+      </div>
+    </li>
+
+    <li class="news-item">
+      <div class="date"><time datetime="2026-07-14">July 2026</time></div>
+      <div class="news-body">
+        <div class="news-text">
+          <h3>Anudeep's farewell</h3>
+          <p>After three years in the group, Anudeep is taking off for new adventures. He was the first postdoc joining the group after we moved to CASUS, and he worked on developing new encounter theory for range-resident movement with directional persistence. Best of luck for your next endeavors, Anudeep!</p>
+        </div>
+      </div>
+    </li>
+
+  </ol>
 </section>
 
 <footer>
