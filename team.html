@@ -106,14 +106,15 @@
   .tab-panel.active{display:block;}
 
   .people-grid{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:26px;
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(min(430px,100%),1fr));gap:24px;
   }
   .person{
     background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    display:grid;grid-template-columns:168px 1fr;align-items:start;
   }
-  .person img{width:100%;height:170px;object-fit:cover;display:block;}
+  .person img{width:168px;aspect-ratio:3/4;height:auto;object-fit:cover;display:block;}
   .initials-avatar{
-    width:100%;height:170px;display:flex;align-items:center;justify-content:center;
+    width:168px;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;
     background:#e4e6e9;
     color:#8a929c;font-family:var(--serif);font-size:2.2rem;font-weight:600;letter-spacing:1px;
   }
@@ -126,6 +127,13 @@
   .person .p-body .co{color:var(--muted);font-size:.78rem;font-style:italic;margin-bottom:8px;}
   .person .p-body p{font-size:.85rem;color:#444;margin:0;}
 
+  .member-group + .member-group{margin-top:30px;}
+  .member-group h4{font-family:var(--serif);font-size:1.02rem;margin:0 0 14px;color:var(--ink);}
+  @media (max-width:520px){
+    .person{grid-template-columns:118px 1fr;}
+    .person img,.initials-avatar{width:118px;}
+    .person .p-body{padding:12px 13px 15px;}
+  }
   .alumni-group{margin-top:36px;}
   .alumni-group h4{font-family:var(--serif);font-size:1.02rem;margin:22px 0 8px;}
   .alumni-group ul{margin:0;padding-left:18px;color:#333;font-size:.9rem;}
@@ -174,87 +182,99 @@
   </div>
 
   <h3 class="sub" style="margin-top:0;">Current Members</h3>
-  <div class="people-grid">
-    <div class="person">
-      <div class="initials-avatar">OA</div>
-      <div class="p-body">
-        <h4>Omar Adel</h4>
-        <div class="role">Research Intern</div>
-        <p>Works on aerial image processing and analysis to quantify changes in vegetation patterns in multidecadal datasets.</p>
+
+  <div class="member-group">
+    <h4>Postdoctoral Researchers</h4>
+    <div class="people-grid">
+      <div class="person">
+        <img src="images/rafael_photo.jpg" alt="Rafael Menezes" loading="lazy">
+        <div class="p-body">
+          <h4>Rafael Menezes</h4>
+          <p>Rafael is broadly interested in studying how individual movement behaviors shape population and community dynamics. To this end, he uses a combination of numerical simulations, spatial pattern analysis, and animal tracking data analysis.</p>
+        </div>
+      </div>
+      <div class="person">
+        <img src="images/david_photo.jpg" alt="David Pinto-Ramos" loading="lazy">
+        <div class="p-body">
+          <h4>David Pinto-Ramos</h4>
+          <p>David studies spatial pattern formation in arid ecosystems. Using techniques from nonlinear dynamics and statistical mechanics, he seeks to develop mechanistic models and combine them with remote-sensing data and satellite imagery to explain how vegetation patterns will respond in a changing climate.</p>
+        </div>
       </div>
     </div>
-    <div class="person">
-      <div class="initials-avatar">TA</div>
-      <div class="p-body">
-        <h4>Timon B. Althaus</h4>
-        <div class="role">Master Student</div>
-        <p>Works on spatial population dynamics in heterogeneous landscapes, focused on competition-colonization tradeoffs and habitat fragmentation.</p>
+  </div>
+
+  <div class="member-group">
+    <h4>PhD Students</h4>
+    <div class="people-grid">
+      <div class="person">
+        <img src="images/paulo_photo.jpg" alt="Paulo E. de Cerqueira Junior" loading="lazy">
+        <div class="p-body">
+          <h4>Paulo E. de Cerqueira Junior</h4>
+          <div class="co">Co-supervised with Viola Priesemann, MPI-DS, Germany</div>
+          <p>Paulo investigates regime shifts in dryland ecosystems, combining functional network analysis and Bayesian inference in simulated and remote-sensing data.</p>
+        </div>
+      </div>
+      <div class="person">
+        <img src="images/melissa_photo.jpg" alt="Melissa Fuentealba" loading="lazy">
+        <div class="p-body">
+          <h4>Melissa Fuentealba</h4>
+          <div class="co">Co-supervised with Ignacio Ormazábal, U. de Concepción, Chile</div>
+          <p>Melissa studies the spatial structures appearing in the underground interaction between plants and fungi and how these affect the stability and productivity of the mutualism between the two, known as ectomycorrhiza.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="initials-avatar">ZL</div>
+        <div class="p-body">
+          <h4>Zihao Liu</h4>
+          <p>Zihao combines analytical and numerical approaches to study pattern formation in ecological systems. He is also interested in applying population-dynamics frameworks to social systems, exploring phenomena such as opinion shifts, disease spreading, and marketing strategies.</p>
+        </div>
       </div>
     </div>
-    <div class="person">
-      <img src="images/paulo_photo.jpg" alt="Paulo E. de Cerqueira Junior" loading="lazy">
-      <div class="p-body">
-        <h4>Paulo E. de Cerqueira Junior</h4>
-        <div class="role">PhD Student</div>
-        <div class="co">Co-supervised with Viola Priesemann, MPI-DS, Germany</div>
-        <p>Investigates regime shifts in dryland ecosystems, combining functional network analysis and Bayesian inference in simulated and remote-sensing data.</p>
+  </div>
+
+  <div class="member-group">
+    <h4>Master Students</h4>
+    <div class="people-grid">
+      <div class="person">
+        <div class="initials-avatar">TA</div>
+        <div class="p-body">
+          <h4>Timon B. Althaus</h4>
+          <p>Timon is working on spatial population dynamics in heterogeneous landscapes. He is particularly interested in the joint effect of competition-colonization tradeoffs and habitat fragmentation in species interactions.</p>
+        </div>
+      </div>
+      <div class="person">
+        <img src="images/vinicius_photo.jpg" alt="Vinicius Menuci" loading="lazy">
+        <div class="p-body">
+          <h4>Vinicius Menuci</h4>
+          <p>Vinicius is interested in studying how water-vegetation feedbacks shape plant interactions and how these lead to large-scale spatial patterns. To this end, he uses nonlinear dynamics, pattern formation and bifurcation theory and different computational techniques.</p>
+        </div>
+      </div>
+      <div class="person">
+        <div class="initials-avatar">KY</div>
+        <div class="p-body">
+          <h4>Khaled Yasein</h4>
+          <p>Yasein studies stochastic evolutionary dynamics and is particularly interested in understanding how spatial structure and quorum-sensing regulation jointly impact the evolutionary stability of cooperation in microbial systems.</p>
+        </div>
       </div>
     </div>
-    <div class="person">
-      <img src="images/melissa_photo.jpg" alt="Melissa Fuentealba" loading="lazy">
-      <div class="p-body">
-        <h4>Melissa Fuentealba</h4>
-        <div class="role">PhD Student</div>
-        <div class="co">Co-supervised with Ignacio Ormazábal, U. de Concepción, Chile</div>
-        <p>Studies spatial structures in the plant–fungi interaction underground, and their effects on the stability and productivity of ectomycorrhizal mutualism.</p>
+  </div>
+
+  <div class="member-group">
+    <h4>Research Interns</h4>
+    <div class="people-grid">
+      <div class="person">
+        <div class="initials-avatar">OA</div>
+        <div class="p-body">
+          <h4>Omar Adel</h4>
+          <p>Omar is curating a multidecade database of aerial images in order to develop new tools to quantify how vegetation patterns change over time.</p>
+        </div>
       </div>
-    </div>
-    <div class="person">
-      <div class="initials-avatar">ZL</div>
-      <div class="p-body">
-        <h4>Zihao Liu</h4>
-        <div class="role">PhD Student</div>
-        <p>Combines analytical and numerical approaches to study pattern formation, and applies population-dynamics frameworks to opinion shifts, disease spread, and marketing strategies.</p>
-      </div>
-    </div>
-    <div class="person">
-      <img src="images/rafael_photo.jpg" alt="Rafael Menezes" loading="lazy">
-      <div class="p-body">
-        <h4>Rafael Menezes</h4>
-        <div class="role">Postdoctoral Researcher</div>
-        <p>Studies how individual movement behaviors shape population and community dynamics, using numerical simulations, spatial pattern analysis, and animal tracking data.</p>
-      </div>
-    </div>
-    <div class="person">
-      <img src="images/vinicius_photo.jpg" alt="Vinicius Menuci" loading="lazy">
-      <div class="p-body">
-        <h4>Vinicius Menuci</h4>
-        <div class="role">Master Student</div>
-        <p>Studies how water–vegetation feedbacks shape plant interactions and large-scale spatial patterns, using nonlinear dynamics, pattern formation, and bifurcation theory.</p>
-      </div>
-    </div>
-    <div class="person">
-      <img src="images/david_photo.jpg" alt="David Pinto-Ramos" loading="lazy">
-      <div class="p-body">
-        <h4>David Pinto-Ramos</h4>
-        <div class="role">Postdoctoral Researcher</div>
-        <p>Studies spatial pattern formation in arid ecosystems, combining nonlinear dynamics and statistical mechanics with remote-sensing and satellite imagery.</p>
-      </div>
-    </div>
-    <div class="person">
-      <img src="images/roza_photo.jpg" alt="Roza Shah Mohammad Nejad" loading="lazy">
-      <div class="p-body">
-        <h4>Roza Shah Mohammad Nejad</h4>
-        <div class="role">Research Intern</div>
-        <p>Investigates how precipitation and wind patterns impact self-organized vegetation patterns in drylands. Supported by an Early Career Fellowship from the Scultetus Center at CASUS.</p>
-      </div>
-    </div>
-    <div class="person">
-      <div class="initials-avatar">KY</div>
-      <div class="p-body">
-        <h4>Khaled Yasein</h4>
-        <div class="role">Master Student</div>
-        <p>Studies stochastic evolutionary dynamics, focused on how spatial structure and quorum-sensing regulation jointly shape the evolutionary stability of cooperation in microbial systems.</p>
+      <div class="person">
+        <img src="images/roza_photo.jpg" alt="Roza Shah Mohammad Nejad" loading="lazy">
+        <div class="p-body">
+          <h4>Roza Shah Mohammad Nejad</h4>
+          <p>Roza investigates how precipitation and wind patterns impact the emergence of self-organized vegetation patterns in dryland ecosystems. Her work is supported by an Early Career Fellowship from the Scultetus Center at CASUS.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -263,35 +283,35 @@
     <h3 class="sub" style="margin-top:0;">Alumni</h3>
     <h4>Postdocs</h4>
     <ul>
-      <li>Gabriel A. Maciel (2020–2022) — now Data Scientist at Carpa Analytics, Curitiba, Brazil.</li>
+      <li>Ian Braga (2025–2026) — now postdoc, Academia Sinica, Taiwan.</li>
+      <li>Anudeep Surendran (2023–2026) — </li>
+      <li>Pablo de Castro (2022–2023) — now Assistant Professor, University of São Paulo, Brazil.</li>
       <li>Vivian Dornelas (2021–2023) — now Assistant Professor, Federal Univ. South of Bahia, Brazil.</li>
       <li>Jesus M. Encinas (2022) — now postdoc, University of Padova, Italy.</li>
-      <li>Pablo de Castro (2022–2023) — now Assistant Professor, University of São Paulo, Brazil.</li>
-      <li>Anudeep Surendran (2023–2026) — </li>      
-      <li>Ian Braga (2025–2026) — now postdoc, Academia Sinica, Taiwan.</li>
+      <li>Gabriel A. Maciel (2020–2022) — now Data Scientist at Carpa Analytics, Curitiba, Brazil.</li>
     </ul>
     <h4>PhD Students</h4>
     <ul>
-      <li>Nathan Silvano (2024) — now postdoc, IFISC, Mallorca, Spain (co-supervised with Daniel Barci, UERJ, Brazil). <a href="https://www.bdtd.uerj.br:8443/handle/1/24034" target="_blank">Thesis</a></li>
       <li>Rafael Menezes (2025) — now postdoc, ICTP-SAIFR, São Paulo, Brazil. <a href="https://www.teses.usp.br/teses/disponiveis/41/41134/tde-16042025-162541/pt-br.php" target="_blank">Thesis</a></li>
+      <li>Nathan Silvano (2024) — now postdoc, IFISC, Mallorca, Spain (co-supervised with Daniel Barci, UERJ, Brazil). <a href="https://www.bdtd.uerj.br:8443/handle/1/24034" target="_blank">Thesis</a></li>
     </ul>
     <h4>Master Students</h4>
     <ul>
-      <li>Benjamin Garcia de Figueiredo (2020–2023) — now PhD student, Princeton University. <a href="https://repositorio.unesp.br/entities/publication/29a7fed2-814b-446d-ac9f-e229b65afd40/full" target="_blank">Thesis</a></li>
       <li>João Valeriano (2021–2023) — now PhD student, Turing Center for Living Systems, Aix-Marseille University. <a href="https://repositorio.unesp.br/entities/publication/3dbadfc1-0e25-4c56-8bfb-23b57d99a619" target="_blank">Thesis</a></li>
       <li>Daniel Jorge (2021–2023) — now PhD student, Princeton University. <a href="https://repositorio.unesp.br/entities/publication/53776e4f-bf8f-4d9b-8881-b45b52248517/full" target="_blank">Thesis</a></li>
+      <li>Benjamin Garcia de Figueiredo (2020–2023) — now PhD student, Princeton University. <a href="https://repositorio.unesp.br/entities/publication/29a7fed2-814b-446d-ac9f-e229b65afd40/full" target="_blank">Thesis</a></li>
       <li>Jairo M. Rojas (2019–2020) — now PhD student, University of Illinois at Urbana-Champaign. <a href="https://repositorio.unesp.br/entities/publication/45b7ff45-19d4-40a5-adf4-b43c1c83f7c1/full" target="_blank">Thesis</a></li>
       <li>Rodrigo Martinez (2018, co-supervised with Manuel Matías, IFISC) — now postdoc, Donostia Int. Physics Center. <a href="https://ifisc.uib-csic.es/en/publications/a-consumer-resource-description-of-public-goods-pr/" target="_blank">Thesis</a></li>
       <li>Victor Buendía (2017, co-supervised with Manuel Matías, IFISC) — now senior postdoc, Bocconi University. <a href="https://ifisc.uib-csic.es/en/publications/modelling-quorum-sensing-mechanisms-in-bacterial-p/" target="_blank">Thesis</a></li>
     </ul>
     <h4>Visiting Students</h4>
     <ul>
-      <li>Matheus Bongestab (2024) — now Postdoc, Instituto Superior Técnico, Lisbon, Portugal.</li>
-      <li>Belén Hidalgo (2024) — now PhD student, Max Planck Institute for Dynamics and Self-Organization, Göttingen, Germany.</li>
+      <li>Saira Sakhi (2026) — now Undergraduate student, Karakoram International University, Gilgit, Pakistan.</li>
       <li>Pablo Gaitán Ruz (2025) — now Undergraduate student, Universidad de Granada, Spain.</li>
       <li>Roza Shah Mohammad Nejad (2025) — now Master student, TU Bergakademie Freiberg, Germany.</li>
       <li>Maksim Prusakov (2025) — now Master student, TU Dresden, Germany.</li>
-      <li>Saira Sakhi (2026) — now Undergraduate student, Karakoram International University, Gilgit, Pakistan.</li>
+      <li>Matheus Bongestab (2024) — now Postdoc, Instituto Superior Técnico, Lisbon, Portugal.</li>
+      <li>Belén Hidalgo (2024) — now PhD student, Max Planck Institute for Dynamics and Self-Organization, Göttingen, Germany.</li>
     </ul>
   </div>
 </section>
