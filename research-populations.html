@@ -178,7 +178,7 @@
   }
   .project-refs li:last-child{border-bottom:none;}
   .project-figure{margin:0;}
-  .project-figure img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
+  .project-figure img,.project-figure video{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
   .project-figure figcaption{color:var(--muted);font-size:.78rem;font-style:italic;margin-top:8px;line-height:1.45;}
   @media (max-width:720px){.project-extras{grid-template-columns:1fr;gap:26px;}}
 </style>
@@ -206,6 +206,28 @@
   <h2>Spatial Population Dynamics</h2>
 
   <p>In our more theoretical projects, we develop bottom-up mathematical frameworks to investigate how nonlinear feedbacks acting on individual movement and demographic rates shape population dynamics in space and time — asking to what extent long-range attraction/repulsion and growth activation/inhibition are system-independent drivers of spatial self-organization. We describe these processes from the individual level, accounting for inherent stochasticity, then use statistical mechanics and many-body physics techniques to upscale microscopic models to the population level, drawing on individual-based simulations, stochastic differential equations, random walk theory, interacting-particle systems, and partial integro-differential equations. Our results show the impact of long-range interactions and dispersal on ecological dynamics at scales ranging from spatial density patterns within a single generation (Martinez-Garcia et al., 2015; Dornelas, de Castro et al., 2024) to reversing the outcome of competitive exclusion (Martinez-Garcia et al., 2021; Maciel and Martinez-Garcia, 2021). Recent work shows aggregation can increase resilience in populations with Allee effects under environmental change (Jorge & Martinez-Garcia, 2024) and how environmental flows shape population spatial distributions and abundances (Silvano et al., 2024).</p>
+  <div class="project-extras">
+    <div>
+      <h4>Selected Publications</h4>
+      <ul class="project-refs">
+        <li>M. Bongestab, D. Pinto-Ramos, R. Martinez-Garcia. Self-organized vegetation patterns promote persistence of plant–pollinator mutualisms under environmental stress. <em>PLOS Ecosystems</em> 1(1), e0000021 (2026) <span class="links">(<a href="https://doi.org/10.1371/journal.pesy.0000021" target="_blank">PDF</a>)</span>.</li>
+        <li>N.O. Silvano, J. Valeriano, E. Hernández-García, C. López, R. Martinez-Garcia. Flow spatial structure determines pattern instabilities in nonlocal models of population dynamics. <em>Communications Physics</em> 8, 326 (2025) <span class="links">(<a href="https://www.nature.com/articles/s42005-025-02246-3" target="_blank">PDF</a>)</span>.</li>
+        <li>A. Surendran, D. Pinto-Ramos, R. Menezes, R. Martinez-Garcia. Spatial moment dynamics and biomass density equations provide complementary, yet limited, descriptions of pattern formation in individual-based simulations. <em>Physica D</em> 477, 134703 (2025) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0167278925001800" target="_blank">PDF</a>)</span>.</li>
+        <li>V. Dornelas, P. de Castro, J.M. Calabrese, W.F. Fagan, R. Martinez-Garcia. Movement bias in asymmetric landscapes and its impact on population distribution and critical habitat size. <em>Proceedings of the Royal Society A</em> 480, 20240185 (2024) <span class="links">(<a href="https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2024.0185" target="_blank">PDF</a>)</span>.</li>
+        <li>D.C.P. Jorge, R. Martinez-Garcia. Demographic effects of spatial patterns in the presence of a component Allee effect. <em>Journal of the Royal Society Interface</em> 21, 20240042 (2024) <span class="links">(<a href="https://doi.org/10.1098/rsif.2024.0042" target="_blank">PDF</a>)</span>.</li>
+        <li>G.A. Maciel, R. Martinez-Garcia. Enhanced species coexistence in Lotka-Volterra competition models due to nonlocal interactions. <em>Journal of Theoretical Biology</em> 530, 110872 (2021) <span class="links">(<a href="https://doi.org/10.1016/j.jtbi.2021.110872" target="_blank">PDF</a>)</span>.</li>
+      </ul>
+    </div>
+    <div class="project-figures">
+      <figure class="project-figure">
+        <video controls preload="metadata" playsinline poster="images/research_higher_order_poster.jpg"
+               aria-label="Individual-based simulation sweeping higher-order interaction strength, showing successive spatial patterns">
+          <source src="images/research_higher_order.mp4" type="video/mp4">
+        </video>
+        <figcaption>Higher-order interactions extends the set of spatial patterns in a purely competitive model. Credit: David Pinto-Ramos.</figcaption>
+      </figure>
+    </div>
+  </div>
 </section>
 
 <footer>
