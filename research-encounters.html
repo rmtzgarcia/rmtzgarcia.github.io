@@ -178,7 +178,8 @@
   }
   .project-refs li:last-child{border-bottom:none;}
   .project-figure{margin:0;}
-  .project-figure img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
+  .project-figure + .project-figure{margin-top:22px;}
+  .project-figure img,.project-figure video{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
   .project-figure figcaption{color:var(--muted);font-size:.78rem;font-style:italic;margin-top:8px;line-height:1.45;}
   @media (max-width:720px){.project-extras{grid-template-columns:1fr;gap:26px;}}
 </style>
@@ -206,6 +207,33 @@
   <h2>Movement Ecology and Encounter Theory</h2>
 
   <p>Our group applies stochastic calculus to investigate how patterns of individual movement, observed in animal tracking datasets, determine interactions among individuals and between individuals and landscape features such as roads or fences. Much of ecological theory — from species-interaction models to mathematical epidemiology — assumes organisms interact following the "law of mass action," a simplification that is incorrect for most real scenarios since it assumes organisms roam freely and are equally likely to interact with any other organism sharing their environment. Our research has produced a new family of encounter models and statistical estimators that relax this well-mixed assumption and account for real movement behavior (Martinez-Garcia et al., 2020; Noonan et al., 2021), showing that realistic encounter rates can be higher or lower than mass action predicts, with implications for higher ecological scales and for how animals interact with roads, power lines, and other infrastructure. We are currently extending this work to interaction statistics (Garcia de Figueiredo et al., 2024) and embedding these models into birth–death population dynamics frameworks (Menezes et al., 2025).</p>
+  <div class="project-extras">
+    <div>
+      <h4>Selected Publications</h4>
+      <ul class="project-refs">
+        <li>A. Surendran, L. Ramirez, J.M. Calabrese, W.F. Fagan, R. Martinez-Garcia. Range residency determines how movement persistence shapes encounter rates. <em>arXiv</em>:2510.13017 (2026) <span class="links">(<a href="https://arxiv.org/pdf/2510.13017" target="_blank">PDF</a>)</span>.</li>
+        <li>B. Garcia de Figueiredo, I. Silva, M.J. Noonan, C.H. Fleming, W.F. Fagan, J.M. Calabrese, R. Martinez-Garcia. How animal movement influences wildlife-vehicle collision risk: a mathematical framework for range-resident species. <em>Journal of Theoretical Biology</em> 627, 112471 (2026) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0022519326000962" target="_blank">PDF</a>)</span>.</li>
+        <li>R. Menezes, J.M. Calabrese, W.F. Fagan, R. Martinez-Garcia. The range-resident logistic model: a new framework to formalize the population-dynamics consequences of range residency. <em>Ecology Letters</em> 28(12), e70269 (2025) <span class="links">(<a href="https://onlinelibrary.wiley.com/doi/epdf/10.1111/ele.70269" target="_blank">PDF</a>)</span>.</li>
+        <li>B. Garcia de Figueiredo, J.M. Calabrese, W.F. Fagan, R. Martinez-Garcia. Ergodicity shapes inference in biological reactions driven by a latent trajectory. <em>arXiv</em>:2409.11433 (2024) <span class="links">(<a href="https://arxiv.org/pdf/2409.11433" target="_blank">PDF</a>)</span>.</li>
+        <li>M.J. Noonan, R. Martinez-Garcia, G.H. Davis, M.C. Crofoot, R. Kays, B.T. Hirsch, E. Payne, A. Sih, D.L. Sinn, O. Spiegel, W.F. Fagan, C.H. Fleming, J.M. Calabrese. Estimating encounter location distributions from animal tracking data. <em>Methods in Ecology and Evolution</em> 12(7), 1158–1173 (2021) <span class="links">(<a href="https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13597" target="_blank">PDF</a>)</span>.</li>
+        <li>R. Martinez-Garcia, C.H. Fleming, R. Seppelt, W.F. Fagan, J.M. Calabrese. How range-residency and long-range perception change encounter rates. <em>Journal of Theoretical Biology</em> 498, 110267 (2020) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0022519320301223" target="_blank">PDF</a>)</span>.</li>
+      </ul>
+    </div>
+    <div class="project-figures">
+      <figure class="project-figure">
+        <video autoplay loop muted playsinline preload="metadata"
+               aria-label="Animated home ranges of individually tracked lowland tapirs in the Brazilian Pantanal">
+          <source src="images/research_tapir_homeranges.webm" type="video/webm">
+          <source src="images/research_tapir_homeranges.mp4" type="video/mp4">
+        </video>
+        <figcaption>Home ranges in a population of lowland tapirs in the Brazilian Pantanal. Data: Medici et al., 2022. Animation credit: Rafael Menezes.</figcaption>
+      </figure>
+      <figure class="project-figure">
+        <img src="images/research_javelinas.jpg" alt="A family of javelinas crossing a two-lane road in Sedona, Arizona, with red rock formations behind" loading="lazy">
+        <figcaption>Javelinas crossing Navahopi Road in Sedona, Arizona. Credit: Terrie Frankel, Wikimedia Commons (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>), cropped.</figcaption>
+      </figure>
+    </div>
+  </div>
 </section>
 
 <footer>
