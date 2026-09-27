@@ -178,7 +178,8 @@
   }
   .project-refs li:last-child{border-bottom:none;}
   .project-figure{margin:0;}
-  .project-figure img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
+  .project-figure + .project-figure{margin-top:22px;}
+  .project-figure img,.project-figure video{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
   .project-figure figcaption{color:var(--muted);font-size:.78rem;font-style:italic;margin-top:8px;line-height:1.45;}
   @media (max-width:720px){.project-extras{grid-template-columns:1fr;gap:26px;}}
 </style>
@@ -206,6 +207,32 @@
   <h2>Microbial Systems</h2>
 
   <p>Microbial systems are ideal for studying emergent phenomena due to their fast characteristic timescales and the ease of laboratory manipulation. Our group has investigated the ecology and evolution of social behaviors in multicellular colonies, using <em>Dictyostelium discoideum</em> aggregates (Tarnita et al., 2015; Martinez-Garcia & Tarnita 2016, 2017; Rossine, Martinez-Garcia et al., 2020) and flagellum-repressed <em>Vibrio cholerae</em> biofilms (Martinez-Garcia et al., 2018) as model organisms. Combining spatially explicit stochastic models with analysis of microscopy images from experimental setups, we work to identify which feedbacks between microbial traits (adhesiveness, shape, motility), behaviors (quorum-sensing regulated exoproduct release, dispersal strategies), and environmental features favor the evolution of social behaviors.</p>
+  <div class="project-extras">
+    <div>
+      <h4>Selected Publications</h4>
+      <ul class="project-refs">
+        <li>I. Braga, L. Wardil, R. Martinez-Garcia. Fixation probabilities for multi-allele Moran dynamics with weak selection. <em>Physical Review Research</em> (in press) <span class="links">(<a href="https://doi.org/10.48550/arXiv.2604.12004" target="_blank">PDF</a>)</span>.</li>
+        <li>F. W. Rossine, R. Martinez-Garcia, A.E. Sgro, T. Gregor, C.E. Tarnita. Eco-evolutionary consequences of loners. <em>PLOS Biology</em> 18(3), e3000642 (2020) <span class="links">(<a href="https://journals.plos.org/plosbiology/article/file?id=10.1371/journal.pbio.3000642&amp;type=printable" target="_blank">PDF</a>)</span>.</li>
+        <li>R. Martinez-Garcia, C.D. Nadell, R. Hartmann, K. Drescher, J.A. Bonachela. Cell adhesion and fluid flow jointly initiate genotype spatial distribution in biofilms. <em>PLOS Computational Biology</em> 14(4), e1006094 (2018) <span class="links">(<a href="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1006094&amp;type=printable" target="_blank">PDF</a>)</span>.</li>
+        <li>R. Martinez-Garcia, C.E. Tarnita. Seasonality can induce coexistence of multiple bet-hedging strategies in <em>Dictyostelium discoideum</em>. <em>Journal of Theoretical Biology</em> 426, 104-116 (2017).</li>
+        <li>R. Martinez-Garcia, C.E. Tarnita. Lack of ecological and life history context can create the illusion of social interactions in <em>Dictyostelium discoideum</em>. <em>PLOS Computational Biology</em> 12(12), e1005246 (2016) <span class="links">(<a href="https://journals.plos.org/ploscompbiol/article/file?id=10.1371/journal.pcbi.1005246&amp;type=printable" target="_blank">PDF</a>)</span>.</li>
+        <li>C.E. Tarnita, A. Washburne, R. Martinez-Garcia, A.E. Sgro, S.A. Levin. Fitness tradeoffs between spores and nonaggregating cells can explain the coexistence of diverse genotypes in cellular slime molds. <em>Proceedings of the National Academy of Sciences of the United States of America</em> 112(9), 2776-2781 (2015) <span class="links">(<a href="https://www.pnas.org/doi/epdf/10.1073/pnas.1424242112" target="_blank">PDF</a>)</span>.</li>
+      </ul>
+    </div>
+    <div class="project-figures">
+      <figure class="project-figure">
+        <video autoplay loop muted playsinline controls preload="auto" poster="images/research_microbes_poster.jpg"
+               aria-label="Microscopy time-lapse of a microbial colony developing a branching network">
+          <source src="images/research_microbes_timelapse.mp4" type="video/mp4">
+        </video>
+        <figcaption>Time lapse of <em>Dictyostelium discoideum</em> aggregation dynamics (Rossine, Martinez-Garcia et al., 2020).</figcaption>
+      </figure>
+      <figure class="project-figure">
+        <img src="images/research_microbes.jpg" alt="Fluorescence micrograph of a bacterial biofilm, two labelled cell populations in red and blue" loading="lazy">
+        <figcaption>Snapshots of one field of view at confluence for matrix-producing <em>Vibrio cholerae</em> strains (Martinez-Garcia et al., 2018).</figcaption>
+      </figure>
+    </div>
+  </div>
 </section>
 
 <footer>
