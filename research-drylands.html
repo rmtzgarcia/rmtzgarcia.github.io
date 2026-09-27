@@ -164,7 +164,7 @@
   .project-card:hover h3{color:var(--accent);}
   .back-link{display:inline-block;font-size:.85rem;font-weight:600;margin-bottom:16px;}
   .project-extras{
-    display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:start;margin:24px 0 8px;
+    display:grid;grid-template-columns:1.3fr 0.7fr;gap:34px;align-items:start;margin:24px 0 8px;
   }
   .project-extras h4{
     font-family:var(--serif);font-size:1rem;font-weight:600;margin:0 0 10px;color:var(--accent);
@@ -176,6 +176,7 @@
   }
   .project-refs li:last-child{border-bottom:none;}
   .project-figure{margin:0;}
+  .project-figure + .project-figure{margin-top:22px;}
   .project-figure img{width:100%;height:auto;display:block;border-radius:8px;border:1px solid var(--line);}
   .project-figure figcaption{color:var(--muted);font-size:.78rem;font-style:italic;margin-top:8px;line-height:1.45;}
   @media (max-width:720px){.project-extras{grid-template-columns:1fr;gap:26px;}}
@@ -213,17 +214,23 @@
     <div>
       <h4>Publications</h4>
       <ul class="project-refs">
-        <li><u>D. Pinto-Ramos</u> &amp; <strong>R. Martinez-Garcia</strong>. How spatial patterns can lead to less resilient ecosystems. <em>Proceedings of the National Academy of Sciences of the United States of America</em> 123 (14) e2511994123 (2026) <span class="links">(<a href="https://www.pnas.org/doi/10.1073/pnas.2511994123" target="_blank">PDF</a>)</span>.</li>
-        <li>C. Cabal, <u>G.A. Maciel</u>, <strong>R. Martinez-Garcia</strong>. Plant antagonistic facilitation across environmental gradients: a soil-resource ecosystem engineering model. <em>New Phytologist</em> 244, 670-682 (2024) <span class="links">(<a href="https://nph.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/nph.20053" target="_blank">PDF</a>)</span>.</li>
-        <li><strong>R. Martinez-Garcia</strong>, C. Cabal, J.M. Calabrese, E. Hernández-García, C.E. Tarnita, C. López, J.A. Bonachela. Integrating theory and experiments to link local mechanisms and ecosystem-level consequences of vegetation patterns in drylands. <em>Chaos, Solitons &amp; Fractals</em> 166, 112881 (2023) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0960077922010608" target="_blank">PDF</a>)</span>.</li>
-        <li>M.P. Veldhuis, <strong>R. Martinez-Garcia</strong>, V. Deblauwe, V. Dakos. Remotely-sensed slowing down in spatially patterned dryland ecosystems. <em>Ecography</em>, e06139 (2022) <span class="links">(<a href="https://nsojournals.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/ecog.06139" target="_blank">PDF</a>)</span>.</li>
-        <li>C. Cabal, <strong>R. Martinez-Garcia</strong>, A. de Castro, F. Valladares, S.W. Pacala. The exploitative segregation of plant roots. <em>Science</em> 370 (6521), 1197-1199 (2020) <span class="links">(<a href="https://www.science.org/doi/10.1126/science.aba9877" target="_blank">PDF</a>)</span>.</li>
+        <li>D. Pinto-Ramos &amp; R. Martinez-Garcia. How spatial patterns can lead to less resilient ecosystems. <em>Proceedings of the National Academy of Sciences of the United States of America</em> 123 (14) e2511994123 (2026) <span class="links">(<a href="https://www.pnas.org/doi/10.1073/pnas.2511994123" target="_blank">PDF</a>)</span>.</li>
+        <li>C. Cabal, G.A. Maciel, R. Martinez-Garcia. Plant antagonistic facilitation across environmental gradients: a soil-resource ecosystem engineering model. <em>New Phytologist</em> 244, 670-682 (2024) <span class="links">(<a href="https://nph.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/nph.20053" target="_blank">PDF</a>)</span>.</li>
+        <li>R. Martinez-Garcia, C. Cabal, J.M. Calabrese, E. Hernández-García, C.E. Tarnita, C. López, J.A. Bonachela. Integrating theory and experiments to link local mechanisms and ecosystem-level consequences of vegetation patterns in drylands. <em>Chaos, Solitons &amp; Fractals</em> 166, 112881 (2023) <span class="links">(<a href="https://www.sciencedirect.com/science/article/pii/S0960077922010608" target="_blank">PDF</a>)</span>.</li>
+        <li>M.P. Veldhuis, R. Martinez-Garcia, V. Deblauwe, V. Dakos. Remotely-sensed slowing down in spatially patterned dryland ecosystems. <em>Ecography</em>, e06139 (2022) <span class="links">(<a href="https://nsojournals.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/ecog.06139" target="_blank">PDF</a>)</span>.</li>
+        <li>C. Cabal, R. Martinez-Garcia, A. de Castro, F. Valladares, S.W. Pacala. The exploitative segregation of plant roots. <em>Science</em> 370 (6521), 1197-1199 (2020) <span class="links">(<a href="https://www.science.org/doi/10.1126/science.aba9877" target="_blank">PDF</a>)</span>.</li>
       </ul>
     </div>
-    <figure class="project-figure">
-      <img src="images/research_drylands.jpg" alt="Aerial view of banded tiger bush vegetation in Niger meeting a sparsely vegetated plain" loading="lazy">
-      <figcaption>Tiger bush vegetation in Niger with a sharp boundary to the sparsely vegetated Sahelian plain. Source: Vincent van Zeijst/Wikimedia Commons (CC BY-SA 4.0).</figcaption>
-    </figure>
+    <div class="project-figures">
+      <figure class="project-figure">
+        <img src="images/research_drylands.jpg" alt="Aerial view of banded tiger bush vegetation in Niger meeting a sparsely vegetated plain" loading="lazy">
+        <figcaption>Tiger bush vegetation in Niger with a sharp boundary to the sparsely vegetated Sahelian plain. Source: Vincent van Zeijst/Wikimedia Commons (CC BY-SA 4.0).</figcaption>
+      </figure>  
+      <figure class="project-figure">
+        <img src="images/research_roots.jpg" alt="Dyed root systems of two neighbouring plants, one red and one blue, against a black background" loading="lazy">
+        <figcaption>Artistic picture of the dyed root systems of two plants following the experimental protocol in (Cabal et al., Science 2020). Photo credit: AAAS.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
